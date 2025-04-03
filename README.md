@@ -1,5 +1,9 @@
 <h1 align="center">Page One Frontend</h1> 
 
+## Tech Stack
+
+- [Svelte](https://svelte.dev/): Tutorials -> https://svelte.dev/tutorial/svelte
+
 ## Development
 
 Start the [backend](https://github.com/iragca/page-one) using Docker. 
