@@ -24,7 +24,7 @@ docker compose -f scripts/docker-compose.yml down
 
 Running the frontend server.
 
-Not recommended to do in Windows Subsytem for Linux (WSL).
+Not recommended to do in Windows Subsystem for Linux (WSL).
 
 ```bash
 npm run dev
