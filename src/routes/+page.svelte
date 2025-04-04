@@ -1,6 +1,5 @@
 <script>
-    import Header from './Header.svelte';
+    import NavBar from '$lib/components/navbar.svelte';
 </script>
 
-
-<Header />
+<NavBar />
