@@ -59,7 +59,6 @@
 	}
 
 	.navbar {
-		position: fixed; /* Make the navbar fixed */
 		top: 0; /* Position it at the top of the viewport */
 		left: 0; /* Align it to the left */
 		width: 100%; /* Make it span the full width */
@@ -69,7 +68,6 @@
 		align-items: center;
 		background-color: var(--background-color);
 		padding: 10px;
-		z-index: 1000; /* Ensure it stays above other elements */
 	}
 
 	.navcontainer {
