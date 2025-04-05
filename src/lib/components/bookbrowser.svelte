@@ -39,7 +39,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		font-weight: bold;
+		font-weight: 600;
 		padding-left: 5px;
 		max-width: 100%;
 	}
@@ -48,6 +48,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		font-weight: 600;
 		opacity: 0.45;
 	}
 
