@@ -91,6 +91,7 @@
 	.search-bar input {
 		border: none;
 		border-radius: 8px;
+		outline: none;
 		width: 480px;
 		height: 36px;
 	}
