@@ -9,6 +9,8 @@
 		<div class="back-icon">
 			<span class="material-symbols-outlined">line_start_arrow</span>
 		</div>
+	</div>
+	<div class="navcontainer middle">
 		<div class="search-bar">
 			<input type="text" placeholder="Search..." />
 			<span class="material-symbols-outlined search">search</span>
@@ -28,14 +30,14 @@
 	@media (prefers-color-scheme: dark) {
 		:root {
 			--icon-color: white;
-			--background-color: black;
+			--background-color: #0f2838;
 		}
 	}
 
 	@media (prefers-color-scheme: light) {
 		:root {
 			--icon-color: white;
-			--background-color: black;
+			--background-color: #2c80b4;
 		}
 	}
 
@@ -61,7 +63,7 @@
 		top: 0; /* Position it at the top of the viewport */
 		left: 0; /* Align it to the left */
 		width: 100%; /* Make it span the full width */
-		display: flex;
+		display: inline-flex;
 		flex-flow: row;
 		justify-content: space-evenly;
 		align-items: center;
@@ -70,15 +72,11 @@
 		z-index: 1000; /* Ensure it stays above other elements */
 	}
 
-	.navcontainer.left {
+	.navcontainer {
+		align-items: center;
 		display: flex;
 		flex-flow: row;
 		gap: 10px;
-	}
-	.navcontainer.right {
-		display: flex;
-		flex-flow: row;
-		justify-content: left;
 	}
 
 	.search-bar {
@@ -91,10 +89,9 @@
 	}
 
 	.search-bar input {
-		border:none;
+		border: none;
 		border-radius: 8px;
 		width: 480px;
-		height: 28px;
-		
+		height: 36px;
 	}
 </style>
