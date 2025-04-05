@@ -11,6 +11,7 @@
 		</div>
 		<div class="search-bar">
 			<input type="text" placeholder="Search..." />
+			<span class="material-symbols-outlined search">search</span>
 		</div>
 		<div class="advanced-search">
 			<span class="material-symbols-outlined">manage_search</span>
@@ -51,6 +52,10 @@
 		color: var(--icon-color);
 	}
 
+	.material-symbols-outlined.search {
+		color: var(--background-color);
+	}
+
 	.navbar {
 		position: fixed; /* Make the navbar fixed */
 		top: 0; /* Position it at the top of the viewport */
@@ -58,7 +63,7 @@
 		width: 100%; /* Make it span the full width */
 		display: flex;
 		flex-flow: row;
-		justify-content: space-between;
+		justify-content: space-evenly;
 		align-items: center;
 		background-color: var(--background-color);
 		padding: 10px 20px;
@@ -74,5 +79,22 @@
 		display: flex;
 		flex-flow: row;
 		justify-content: left;
+	}
+
+	.search-bar {
+		background-color: white;
+		border-radius: 8px;
+		padding-left: 8px;
+		padding-right: 8px;
+		align-items: center;
+		display: flex;
+	}
+
+	.search-bar input {
+		border:none;
+		border-radius: 8px;
+		width: 480px;
+		height: 28px;
+		
 	}
 </style>
