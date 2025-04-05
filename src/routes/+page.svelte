@@ -1,6 +1,13 @@
 <script>
-    import Header from './Header.svelte';
+	import NavBar from '$lib/components/navbar.svelte';
+	import Dashboard from './dashboard.svelte';
 </script>
 
+<NavBar />
+<Dashboard />
 
-<Header />
+<style>
+	:global(body) {
+		margin: 0;
+	}
+</style>
