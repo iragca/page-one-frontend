@@ -1,10 +1,10 @@
 <script lang="ts">
-    import SideBar from '$lib/components/sidebar.svelte';
+    // import SideBar from '$lib/components/sidebar.svelte';
 </script>
 
 
 <div class="grid-container">
-    <div class="grid-item"><SideBar /></div>
+    <div class="grid-item"></div>
     <div class="grid-item"></div>
 </div>
 
