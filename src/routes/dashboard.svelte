@@ -13,7 +13,7 @@
 <style>
 	.grid-container {
 		display: grid;
-		grid-template-columns: 2fr 5fr;
+		grid-template-columns: minmax(0, 250px) 5fr;
 		height: 100vh;
 		width: 100%;
 		overflow: hidden; /* Prevents overflow beyond the container */
