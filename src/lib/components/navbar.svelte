@@ -68,7 +68,7 @@
 		justify-content: space-evenly;
 		align-items: center;
 		background-color: var(--background-color);
-		padding: 10px 20px;
+		padding: 10px;
 		z-index: 1000; /* Ensure it stays above other elements */
 	}
 
@@ -79,6 +79,11 @@
 		gap: 10px;
 	}
 
+	.navcontainer.middle {
+		width: 50%;
+		min-width: 200px
+	}
+
 	.search-bar {
 		background-color: white;
 		border-radius: 8px;
@@ -86,13 +91,27 @@
 		padding-right: 8px;
 		align-items: center;
 		display: flex;
+		width: 100%;
 	}
 
 	.search-bar input {
 		border: none;
 		border-radius: 8px;
 		outline: none;
-		width: 480px;
+		width: 100%;
 		height: 36px;
 	}
+
+	/* Responsive design */
+
+	@media (max-width: 768px) {
+
+		/* TODO: Adjust the navbar for smaller screens */
+	}
+
+	@media (max-width: 480px) {
+
+		/* TODO: Adjust the navbar for smaller screens */
+	}
+
 </style>
