@@ -80,7 +80,7 @@
 
 	.background {
 		height: 100vh;
-		margin: 0;
+		margin: 0px;
 		background:
 			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
 			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);

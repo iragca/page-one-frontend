@@ -4,15 +4,16 @@
 
 	let response = $props();
 
-	let books = response.data.books
-
+	let books = response.data.books;
 </script>
 
-<NavBar />
-<Dashboard {books} />
+<div class="background">
+	<NavBar />
+	<Dashboard {books} />
+</div>
 
 <style>
-	:global(body) {
-		margin: 0;
+	.background {
+		background-color: var(--background-color);
 	}
 </style>

@@ -17,6 +17,10 @@
 		height: 100vh;
 		width: 100%;
 		overflow: hidden; /* Prevents overflow beyond the container */
+
+		background:
+			radial-gradient(circle at 20% 20%, var(--background-color-2), transparent 70%),
+			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
 	}
 
 	.grid-item {
@@ -27,6 +31,6 @@
 		max-width: 100%; /* Ensures items do not exceed their fraction size */
 		overflow: auto; /* Allows scroll if the content overflows */
 		box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+		background-color: transparent;
 	}
-
 </style>
