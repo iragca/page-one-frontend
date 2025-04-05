@@ -14,5 +14,10 @@
 
 body {
     font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: 13px;
+
+    --background-color-2: #474747;
+    --background-color-3: #4c4748;
 }

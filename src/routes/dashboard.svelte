@@ -21,7 +21,6 @@
 
 	.grid-item {
 		background-color: var(--background-color);
-		padding: 20px;
 		text-align: center;
 		color: white;
 		border: 1px solid var(--icon-color);
@@ -29,4 +28,5 @@
 		overflow: auto; /* Allows scroll if the content overflows */
 		box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 	}
+
 </style>
