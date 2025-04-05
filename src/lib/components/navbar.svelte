@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../../app.css';
 </script>
 
 <nav class="navbar">
@@ -27,19 +28,6 @@
 </nav>
 
 <style>
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--icon-color: white;
-			--background-color: #0f2838;
-		}
-	}
-
-	@media (prefers-color-scheme: light) {
-		:root {
-			--icon-color: white;
-			--background-color: #2c80b4;
-		}
-	}
 
 	.material-icons {
 		color: var(--icon-color);
