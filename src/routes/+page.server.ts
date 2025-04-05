@@ -1,6 +1,5 @@
+import { BACKEND_API_URL } from '$env/static/private';
 import type { PageServerLoad } from './$types';
-
-const BACKEND_API_URL = import.meta.env.BACKEND_API_URL || 'http://localhost:5000/'
 
 export const load = (async (event) => {
 
