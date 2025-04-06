@@ -6,7 +6,8 @@
 	{#each books as book}
 		<div class="book-container">
 			<div class="book">
-				<img class="book" src={book.cover_photo} alt={book.title} />
+				<!-- <img class="book" src={book.cover_photo} alt={book.title} /> -->
+				<img class="book" src="https://placehold.co/400x600" alt={book.title} />
 			</div>
 			<div class="book-title">{book.title}</div>
 			<div class="book-author">{book.author}</div>
