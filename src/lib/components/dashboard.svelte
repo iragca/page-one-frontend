@@ -1,11 +1,11 @@
 <script lang="ts">
-	// import SideBar from '$lib/components/sidebar.svelte';
+	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
 	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
 	let { response } = $props();
 </script>
 
 <div class="grid-container">
-	<div class="grid-item"></div>
+	<div class="grid-item"><SideBar /></div>
 	<div class="grid-item"><BookBrowser {response} /></div>
 </div>
 
