@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../../app.css';
 	import Gridview from './_bookbrowser/gridview.svelte';
-	import GridView from './_bookbrowser/gridview.svelte';
 	let { response } = $props();
 
 	let books = $state(response.data.books);
