@@ -51,8 +51,7 @@
 
 	.user-image:hover {
 		cursor: pointer;
-		transition: all 0.3s ease-in-out;
-		transform: scale(0.9);
+		transition: all 0.1s ease-in-out;
 		box-shadow: 0px 0px 5px var(--dark-black);
 		opacity: 0.5;
 	}
