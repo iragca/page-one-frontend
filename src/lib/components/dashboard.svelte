@@ -28,8 +28,8 @@
 		color: white;
 		border: 1px solid var(--icon-color);
 		max-width: 100%; /* Ensures items do not exceed their fraction size */
-		overflow: auto; /* Allows scroll if the content overflows */
 		box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 		background-color: transparent;
 	}
+
 </style>
