@@ -2,17 +2,25 @@
 	let { books } = $props();
 </script>
 
-{#each books as book}
-	<div class="book-container">
-		<div class="book">
-			<img class="book" src={book.cover_photo} alt={book.title} />
+<div class="book-grid">
+	{#each books as book}
+		<div class="book-container">
+			<div class="book">
+				<img class="book" src={book.cover_photo} alt={book.title} />
+			</div>
+			<div class="book-title">{book.title}</div>
+			<div class="book-author">{book.author}</div>
 		</div>
-		<div class="book-title">{book.title}</div>
-		<div class="book-author">{book.author}</div>
-	</div>
-{/each}
+	{/each}
+</div>
 
 <style>
+	.book-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
 	.book-container {
 		align-items: center;
 		text-align: center;

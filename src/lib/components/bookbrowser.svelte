@@ -22,15 +22,14 @@
 			<button class="sort-button">Sort by Date</button>
 			<button class="sort-button">Sort by Genre</button>
 		</div>
-		<div class="book-grid">
-			{#if fetchFailed}
-				<div class="error-message">{errorMessage}</div>
-			{:else if books.length === 0}
-				<div class="no-books">No books available</div>
-			{:else}
-				<Gridview {books} />
-			{/if}
-		</div>
+
+		{#if fetchFailed}
+			<div class="error-message">{errorMessage}</div>
+		{:else if books.length === 0}
+			<div class="no-books">No books available</div>
+		{:else}
+			<Gridview {books} />
+		{/if}
 	</div>
 </div>
 
@@ -38,12 +37,6 @@
 	.grid {
 		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
-	}
-
-	.book-grid {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
 	}
 
 	.background {
