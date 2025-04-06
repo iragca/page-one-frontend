@@ -1,5 +1,5 @@
 services:
-  backend_mongodb:
+  page-one_mongodb:
     container_name: backend_mongodb
     image: 'bitnami/mongodb:latest'
     ports:
@@ -9,11 +9,18 @@ services:
       interval: 10s
       retries: 5
       timeout: 5s
+  backend_insert_data:
+    container_name: backend_insert_data
+    image: 'iragca/page-one-insert_data:latest'
+    depends_on:
+      page-one_mongodb:
+        condition: service_healthy
+    command: [ "sh", "-c", "python insert_data.py" ]
   backend_webapp:
     container_name: backend_webapp
-    image: 'iragca/page-one-backend:latest'
+    image: 'iragca/page-one-backend_webapp:latest'
     depends_on:
-      backend_mongodb:
+      page-one_mongodb:
         condition: service_healthy
     ports:
       - '5000:5000'
