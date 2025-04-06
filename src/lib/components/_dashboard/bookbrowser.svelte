@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '../../app.css';
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
 	let { response } = $props();

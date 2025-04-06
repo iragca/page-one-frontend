@@ -1,6 +1,6 @@
 <script>
 	import NavBar from '$lib/components/navbar.svelte';
-	import Dashboard from './dashboard.svelte';
+	import Dashboard from '$lib/components/dashboard.svelte';
 
 	let response = $props();
 
