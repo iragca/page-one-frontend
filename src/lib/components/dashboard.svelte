@@ -20,15 +20,14 @@
 			<span class="material-symbols-outlined"> arrow_menu_open</span>
 		</button>
 	{/if}
-	<div class="grid-item"><BookBrowser {response} /></div>
+	<div class="grid-item bookbrowser"><BookBrowser {response} /></div>
 </div>
 
 <style>
 	.grid-container {
-		display: grid;
-		grid-template-columns: minmax(0, 250px) 5fr;
+		display: flex;
 		height: 100vh;
-		width: 100%;
+		width: 100vw;
 		overflow: hidden; /* Prevents overflow beyond the container */
 		background:
 			radial-gradient(circle at 20% 20%, var(--background-color-2), transparent 70%),
@@ -44,6 +43,13 @@
 		background-color: transparent;
 	}
 
+	.grid-item.sidebar {
+		flex: 0 0 250px; /* Fixed width for sidebar */
+	}
+	.grid-item.bookbrowser {
+		flex: 1; /* Takes the remaining space */
+	}
+
 	.close-sidebar {
 		position: absolute;
 		top: 10px;
@@ -52,7 +58,7 @@
 		height: 40px;
 		cursor: pointer; /* Change cursor to pointer */
 		background-color: rgb(83, 82, 82);
-		border: 2px solid var(--dark-black);
+		border: 2px solid var(--dark-gray);
 		border-radius: 20%;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		z-index: 10;
@@ -71,7 +77,7 @@
 		height: 40px;
 		cursor: pointer; /* Change cursor to pointer */
 		background-color: rgb(83, 82, 82);
-		border: 2px solid var(--dark-black);
+		border: 2px solid var(--dark-gray);
 		border-radius: 20%;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		z-index: 10;
