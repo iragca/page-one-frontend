@@ -25,7 +25,6 @@
 	.grid-item {
 		background-color: var(--background-color);
 		text-align: center;
-		color: white;
 		border: 1px solid var(--icon-color);
 		max-width: 100%; /* Ensures items do not exceed their fraction size */
 		box-sizing: border-box; /* Ensure padding doesn't cause overflow */

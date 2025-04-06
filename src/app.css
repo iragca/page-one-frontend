@@ -19,6 +19,7 @@ body {
     font-size: 13px;
     margin: 0px;
 
+    color: var(--icon-color);
     --dark-black: #171a1d;
     --background-color-2: #474747;
     --background-color-3: #4c4748;
