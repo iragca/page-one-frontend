@@ -4,12 +4,11 @@
 
 	let response = $props();
 
-	let books = response.data.books;
 </script>
 
 <div class="background">
 	<NavBar />
-	<Dashboard {books} />
+	<Dashboard {response} />
 </div>
 
 <style>

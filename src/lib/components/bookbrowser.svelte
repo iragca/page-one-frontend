@@ -1,6 +1,15 @@
 <script lang="ts">
 	import '../../app.css';
-	let { books } = $props();
+	let { response } = $props();
+
+	let books = $state(response.data.books);
+	let fetchFailed = $state(false);
+	let errorMessage = $state('');
+
+	if (response.data.status > 400) {
+		fetchFailed = true;
+		errorMessage = response.data.error;
+	}
 </script>
 
 <div class="background">
@@ -12,15 +21,21 @@
 			<button class="sort-button">Sort by Genre</button>
 		</div>
 		<div class="book-grid">
-			{#each books as book}
-				<div class="book-container">
-					<div class="book">
-						<img class="book" src={book.cover_photo} alt={book.title} />
+			{#if fetchFailed}
+				<div class="error-message">{errorMessage}</div>
+			{:else if books.length === 0}
+				<div class="no-books">No books available</div>
+			{:else}
+				{#each books as book}
+					<div class="book-container">
+						<div class="book">
+							<img class="book" src={book.cover_photo} alt={book.title} />
+						</div>
+						<div class="book-title">{book.title}</div>
+						<div class="book-author">{book.author}</div>
 					</div>
-					<div class="book-title">{book.title}</div>
-					<div class="book-author">{book.author}</div>
-				</div>
-			{/each}
+				{/each}
+			{/if}
 		</div>
 	</div>
 </div>

@@ -2,12 +2,12 @@
 	// import SideBar from '$lib/components/sidebar.svelte';
 	import BookBrowser from '$lib/components/bookbrowser.svelte';
 
-	let { books } = $props();
+	let { response } = $props();
 </script>
 
 <div class="grid-container">
 	<div class="grid-item"></div>
-	<div class="grid-item"><BookBrowser {books} /></div>
+	<div class="grid-item"><BookBrowser {response} /></div>
 </div>
 
 <style>
