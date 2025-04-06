@@ -1,6 +1,7 @@
 <script lang="ts">
 	// import SideBar from '$lib/components/sidebar.svelte';
 	import BookBrowser from '$lib/components/bookbrowser.svelte';
+</script>
 
 	let { response } = $props();
 </script>
