@@ -1,3 +1,10 @@
+/*
+This files is a global CSS file, which is automatically
+imported to every module in src/routes or src/lib.
+Variables are defined here and can be used in any component
+since this is imported in app.html.
+*/
+
 @media (prefers-color-scheme: dark) {
     :root {
         --icon-color: white;

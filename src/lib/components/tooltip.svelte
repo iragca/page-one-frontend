@@ -1,3 +1,9 @@
+<!--
+Wrap a component with this tooltip component to add a tooltip.  
+This component creates a tooltip that appears when the user hovers over an element.
+The tooltip displays the text passed to it via the `title` prop.
+The tooltip follows the mouse cursor and disappears when the mouse leaves the element. -->
+
 <script>
 	export let title = '';
 	let isHovered = false;
