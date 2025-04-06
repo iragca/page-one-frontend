@@ -3,10 +3,22 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
 
-    const response = await fetch(`${BACKEND_API_URL}/books`)
-    const responseBody = await response.json();
+    try {
+        const response = await fetch(`${BACKEND_API_URL}/books`)
 
-    return {
-        books: responseBody,
-    };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const responseBody = await response.json();
+
+        return {
+            status: response.status,
+            books: responseBody,
+        };
+    } catch (error: any) {
+        return {
+            status: 500,
+            error: 'Could not fetch data from the server.',
+        }
+    }
 }) satisfies PageServerLoad;
