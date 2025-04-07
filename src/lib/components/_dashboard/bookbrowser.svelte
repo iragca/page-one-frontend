@@ -2,8 +2,7 @@
 	import NavBar from '$lib/components/navbar.svelte';
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
-	import ViewToggle from './_bookbrowser/_options/view-toggle.svelte';
-	import SortOptions from './_bookbrowser/_options/sort-options.svelte';
+	import Options from './_bookbrowser/_options/options.svelte';
 	
 	let { response } = $props();
 	let viewMode = $state('grid');
@@ -26,9 +25,8 @@
 		<div class="navbar-container">
 			<NavBar />
 		</div>
-		<div>
-			<SortOptions />
-			<ViewToggle {toggleView} {viewMode} />
+		<div class="options-container">
+			<Options {toggleView} {viewMode} />
 		</div>
 
 		{#if fetchFailed}
@@ -47,6 +45,7 @@
 	.grid {
 		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
+		gap: 20px;
 	}
 
 	.background {
