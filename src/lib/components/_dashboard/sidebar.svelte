@@ -1,12 +1,20 @@
 <script lang="ts">
 	import Profilecard from '$lib/components/_dashboard/_sidebar/profilecard.svelte';
+	import ShelvesCategory from '$lib/components/_dashboard/_sidebar/_shelves/shelves-category.svelte';
+	import Shelves from './_sidebar/_shelves/shelves.svelte';
 </script>
 
 <div class="background">
 	<div class="grid">
 		<Profilecard />
-		<slot name="content"></slot>
-		<slot name="footer"></slot>
+		<ShelvesCategory let:Shelves categoryName="My Library">
+				<Shelves let:Shelf>
+					<Shelf>My Books</Shelf>
+					<Shelf>Reading</Shelf>
+					<Shelf>Want to Read</Shelf>
+					<Shelf>Favorites</Shelf>
+				</Shelves>
+		</ShelvesCategory>
 	</div>
 </div>
 
