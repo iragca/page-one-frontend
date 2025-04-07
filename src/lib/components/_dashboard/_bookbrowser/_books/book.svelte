@@ -1,13 +1,19 @@
 <script lang="ts">
+    import { fade, fly } from 'svelte/transition';
 	let { title } = $props();
 
 	let hovering = $state(false);
+
+    let transitionOptions = {
+        duration: 80
+    };
+
 </script>
 
 <button class="book" onmouseenter={() => (hovering = true)} onmouseleave={() => (hovering = false)}>
 	{#if hovering}
-		<div class="layer book-icon"><span class="material-symbols-outlined"> menu_book </span></div>
-		<div class="layer vignette"></div>
+		<div class="layer book-icon" transition:fade={transitionOptions}><span class="material-symbols-outlined"> menu_book </span></div>
+		<div class="layer vignette" transition:fade={transitionOptions}></div>
 	{/if}
 	<img class="layer book-image" src="https://placehold.co/400x600" alt={title} />
 </button>
