@@ -15,19 +15,15 @@
 			<input type="text" placeholder="Search..." />
 			<span class="material-symbols-outlined search">search</span>
 		</div>
-		<div class="advanced-search">
-			<span class="material-symbols-outlined">manage_search</span>
-		</div>
 	</div>
 	<div class="navcontainer right">
-		<div class="account">
-			<span class="material-symbols-outlined">account_circle</span>
+		<div class="advanced-search">
+			<span class="material-symbols-outlined">manage_search</span>
 		</div>
 	</div>
 </nav>
 
 <style>
-
 	.material-icons {
 		color: var(--icon-color);
 	}
@@ -46,15 +42,21 @@
 	}
 
 	.navbar {
-		top: 0; /* Position it at the top of the viewport */
-		left: 0; /* Align it to the left */
-		width: 100%; /* Make it span the full width */
-		display: inline-flex;
+		width: fit-content;
+		display: flex;
 		flex-flow: row;
-		justify-content: space-evenly;
+		justify-content: space-between;
 		align-items: center;
-		background-color: var(--background-color);
+		background: rgba(31, 31, 31, 0.5); /* semi-transparent */
+		box-shadow: 0px 0px 8px var(--dark-black);
 		padding: 10px;
+		gap: 12px;
+		border: 1px solid var(--light-gray);
+		border-radius: 12px;
+	}
+
+	.navbar:hover {
+		box-shadow: 0px 0px 12px var(--dark-black);
 	}
 
 	.navcontainer {
@@ -66,7 +68,7 @@
 
 	.navcontainer.middle {
 		width: 50%;
-		min-width: 200px
+		min-width: 200px;
 	}
 
 	.search-bar {
@@ -76,10 +78,11 @@
 		padding-right: 8px;
 		align-items: center;
 		display: flex;
-		width: 100%;
+		width: 50vw;
 	}
 
 	.search-bar input {
+		color: var(--dark-black);
 		border: none;
 		border-radius: 8px;
 		outline: none;
@@ -90,13 +93,10 @@
 	/* Responsive design */
 
 	@media (max-width: 768px) {
-
 		/* TODO: Adjust the navbar for smaller screens */
 	}
 
 	@media (max-width: 480px) {
-
 		/* TODO: Adjust the navbar for smaller screens */
 	}
-
 </style>

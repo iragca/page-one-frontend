@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NavBar from '$lib/components/navbar.svelte';
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
 	let { response } = $props();
@@ -20,6 +21,9 @@
 
 <div class="background">
 	<div class="grid">
+		<div class="navbar-container">
+			<NavBar />
+		</div>
 		<div>
 			<div class="sort-buttons">
 				<button class="sort-button">Sort by Title</button>
@@ -59,5 +63,11 @@
 		background:
 			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
 			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
+	}
+
+	.navbar-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
