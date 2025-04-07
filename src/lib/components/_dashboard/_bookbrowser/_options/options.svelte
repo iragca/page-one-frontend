@@ -6,6 +6,18 @@
 </script>
 
 <div class="background">
-    <SortOptions />
     <ViewToggle {toggleView} {viewMode} />
+    <SortOptions />
 </div>
+
+<style>
+    .background {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--background-color-1);
+        gap: 12px
+    }
+
+</style>
