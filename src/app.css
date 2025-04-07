@@ -30,6 +30,7 @@ body {
     --dark-black: #171a1d;
     --dark-gray: rgb(48, 48, 48);
     --gray: rgb(90, 90, 90);
+    --light-gray: rgb(160, 160, 160);
     --background-color-2: #474747;
     --background-color-3: #4c4748;
 }
