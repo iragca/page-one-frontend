@@ -14,18 +14,25 @@
 
 <style>
 	.view-toggle {
-		border: 1px solid var(--light-gray);
-        border-radius: 8px;
+		border: 2px solid var(--dark-gray);
+		border-radius: 8px;
 
-        width: 40px;
-        height: 40px;
+		width: 40px;
+		height: 40px;
 
-        background-color: rgba(31, 31, 31, 0.5);
+		background-color: rgba(31, 31, 31, 0.4);
+		color: var(--light-gray);
 	}
 	.view-toggle:hover {
-		box-shadow: 0px 0px 12px var(--dark-black);
-        transition: 0.24s;
+		box-shadow: 0px 0px 8px var(--dark-black);
+		transition: 0.24s;
+		color: white;
+	}
 
+	.view-toggle:active {
+		box-shadow: 0px 0px 8px var(--dark-black);
+		transition: 0s;
+		border: 2px solid var(--light-gray);
 	}
 	.toggle-button {
 		all: unset;
@@ -35,9 +42,8 @@
 		justify-content: center;
 		align-items: center;
 
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
+		width: 100%;
+		height: 100%;
+		border-radius: 8px;
 	}
-
 </style>
