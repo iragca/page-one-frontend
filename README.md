@@ -14,12 +14,12 @@ You must have Docker [installed](https://docs.docker.com/engine/install/) for th
 
 Compose up
 ```bash
-docker compose -f scripts/docker-compose.yml up -d
+npm run start_backend
 ```
 
 Compose down
 ```bash
-docker compose -f scripts/docker-compose.yml down
+npm run stop_backend
 ```
 
 Running the frontend server.

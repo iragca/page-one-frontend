@@ -4,6 +4,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"start_backend": "docker compose -f scripts/docker-compose.yml up -d",
+		"stop_backend": "docker compose -f scripts/docker-compose.yml down",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
