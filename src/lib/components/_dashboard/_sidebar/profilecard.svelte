@@ -2,6 +2,22 @@
 	import { faker, fr } from '@faker-js/faker';
 	import { copyToClipboard } from '$lib/utils/copyToClipboard';
 	import Tooltip from '$lib/components/tooltip.svelte';
+	import ModalButton from './_profilecard/modal-button.svelte';
+	import ModalDivider from './_profilecard/modal-divider.svelte';
+
+	let showModal = $state(false);
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+
+	function openModal(event: MouseEvent) {
+		mouseX = event.clientX;
+		mouseY = event.clientY;
+		showModal = true;
+	}
+
+	function closeModal() {
+		showModal = false;
+	}
 
 	let copied = $state(false);
 	let userId = $state(Math.random().toString(36).substring(2, 15));
@@ -9,9 +25,9 @@
 
 <div class="background">
 	<div class="grid">
-		<div class="user-image">
+		<button class="user-image" onclick={openModal}>
 			<img src={faker.image.avatarGitHub()} alt="user avatar" />
-		</div>
+		</button>
 		<div class="user-details">
 			<div class="user-name">{faker.internet.displayName()}</div>
 			<Tooltip title="Copy to clipboard">
@@ -21,7 +37,26 @@
 	</div>
 </div>
 
+{#if showModal}
+	<button class="modal" style="top: {mouseY}px; left: {mouseX}px;" onmouseleave={closeModal}>
+		<ModalButton action={() => {}} name="Account" icon="account_circle" />
+		<ModalButton action={() => {}} name="Logout" icon="logout" />
+		<ModalDivider />
+		<ModalButton action={() => {}} name="Settings" icon="settings" />
+	</button>
+{/if}
+
 <style>
+	.modal {
+		all: unset;
+		position: absolute;
+		background: var(--dark-gray);
+		border-radius: 8px;
+		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+		width: fit-content;
+		padding: 8px;
+		z-index: 999;
+	}
 	.grid {
 		border-bottom: var(--background-color-2) 1px solid;
 		box-shadow: 0px 0px 5px var(--dark-black);
@@ -30,6 +65,7 @@
 	}
 
 	.user-image {
+		all: unset;
 		display: flex;
 		justify-content: center;
 		align-items: center;
