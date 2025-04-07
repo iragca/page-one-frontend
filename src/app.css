@@ -1,3 +1,10 @@
+/*
+This files is a global CSS file, which is automatically
+imported to every module in src/routes or src/lib.
+Variables are defined here and can be used in any component
+since this is imported in app.html.
+*/
+
 @media (prefers-color-scheme: dark) {
     :root {
         --icon-color: white;
@@ -19,6 +26,11 @@ body {
     font-size: 13px;
     margin: 0px;
 
+    color: var(--icon-color);
+    --dark-black: #171a1d;
+    --dark-gray: rgb(48, 48, 48);
+    --gray: rgb(90, 90, 90);
+    --light-gray: rgb(160, 160, 160);
     --background-color-2: #474747;
     --background-color-3: #4c4748;
 }
