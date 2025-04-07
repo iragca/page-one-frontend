@@ -26,7 +26,6 @@
 		cursor: pointer;
 		height: 225px;
 		width: 150px;
-		border: 1px solid #ccc;
 		overflow: hidden;
 		object-fit: fill;
 	}
