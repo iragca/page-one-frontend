@@ -2,8 +2,10 @@
 	import NavBar from '$lib/components/navbar.svelte';
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
+	import ViewToggle from './_bookbrowser/_options/view-toggle.svelte';
+	import SortOptions from './_bookbrowser/_options/sort-options.svelte';
+	
 	let { response } = $props();
-
 	let viewMode = $state('grid');
 	let toggleView = () => {
 		viewMode = viewMode === 'grid' ? 'list' : 'grid';
@@ -25,17 +27,8 @@
 			<NavBar />
 		</div>
 		<div>
-			<div class="sort-buttons">
-				<button class="sort-button">Sort by Title</button>
-				<button class="sort-button">Sort by Author</button>
-				<button class="sort-button">Sort by Date</button>
-				<button class="sort-button">Sort by Genre</button>
-			</div>
-			<div class="view-toggle">
-				<button class="toggle-button" onclick={toggleView}>
-					{viewMode === 'grid' ? 'Switch to List View' : 'Switch to Grid View'}
-				</button>
-			</div>
+			<SortOptions />
+			<ViewToggle {toggleView} {viewMode} />
 		</div>
 
 		{#if fetchFailed}
