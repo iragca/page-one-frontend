@@ -34,3 +34,7 @@ body {
     --background-color-2: #474747;
     --background-color-3: #4c4748;
 }
+
+.material-symbols-outlined, .material-icons {
+    user-select: none;
+}
