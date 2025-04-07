@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Profilecard from '$lib/components/_dashboard/_sidebar/profilecard.svelte';
 	import ShelvesCategory from '$lib/components/_dashboard/_sidebar/_shelves/shelves-category.svelte';
-	import Shelves from './_sidebar/_shelves/shelves.svelte';
 </script>
 
 <div class="background">
