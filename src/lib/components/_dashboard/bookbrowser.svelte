@@ -3,7 +3,7 @@
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
-	
+
 	let { response } = $props();
 	let viewMode = $state('grid');
 	let toggleView = () => {
@@ -23,6 +23,7 @@
 <div class="background">
 	<div class="grid">
 		<div class="navbar-container">
+			<slot /> <!-- reserved for sidebar toggle -->
 			<NavBar />
 			<Options {toggleView} {viewMode} />
 		</div>

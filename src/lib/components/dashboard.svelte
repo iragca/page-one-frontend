@@ -1,9 +1,11 @@
 <script lang="ts">
 	import OpenSidebarButton from './buttons/OpenSidebarButton.svelte';
 	import CloseSidebarButton from './buttons/CloseSidebarButton.svelte';
-
+	import ButtonWithIcon from '$lib/components/buttons/ButtonWithIcon.svelte';
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
 	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
+	import ButtonWithIconBg from './buttons/ButtonWithIconBG.svelte';
+
 	let { response } = $props();
 	let closeSidebar = $state(false);
 
@@ -14,18 +16,17 @@
 
 <div class="grid-container">
 	{#if !closeSidebar}
-		<button class="close-sidebar" onclick={toggleSidebar}>
-			<CloseSidebarButton />
-		</button>
 		<div class="grid-item sidebar">
 			<SideBar />
 		</div>
-	{:else}
-		<button class="open-sidebar" onclick={toggleSidebar}>
-			<OpenSidebarButton />
-		</button>
 	{/if}
-	<div class="grid-item bookbrowser"><BookBrowser {response} /></div>
+	<div class="grid-item bookbrowser">
+		<BookBrowser {response}>
+			<button class="close-sidebar" onclick={toggleSidebar}>
+				<ButtonWithIcon>menu</ButtonWithIcon>
+			</button>
+		</BookBrowser>
+	</div>
 </div>
 
 <style>
