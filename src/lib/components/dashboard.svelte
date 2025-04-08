@@ -60,8 +60,4 @@
 	.close-sidebar {
 		all: unset;
 	}
-
-	.open-sidebar {
-		all: unset;
-	}
 </style>
