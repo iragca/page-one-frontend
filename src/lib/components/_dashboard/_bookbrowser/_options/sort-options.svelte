@@ -13,7 +13,7 @@
 
 <div class="background">
 	<button class="button-container" onclick={toggleDropdown}>
-		<ButtonWithIcon />
+		<ButtonWithIcon>sort</ButtonWithIcon>
 	</button>
 	{#if showDropdown}
 		<Dropdown>
