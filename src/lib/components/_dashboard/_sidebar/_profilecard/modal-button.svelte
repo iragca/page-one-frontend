@@ -19,14 +19,14 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-		padding: 0.4rem 0.8rem;
+		padding: 0.8rem 0.8rem;
 		border-radius: 4px;
 		cursor: pointer;
         /* Setting the width: 100% causes it to overflow, 
         and go out of bounds, idk why man someone fix this.
         */
         width: 100px;
-        gap: 8px;
+        gap: 24px;
 
     }
 

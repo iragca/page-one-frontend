@@ -3,11 +3,8 @@
 
 <nav class="navbar">
 	<div class="navcontainer left">
-		<div class="home-icon">
-			<span class="material-icons">home</span>
-		</div>
-		<div class="back-icon">
-			<span class="material-symbols-outlined">line_start_arrow</span>
+		<div class="menu">
+			<span class="material-icons">menu</span>
 		</div>
 	</div>
 	<div class="navcontainer middle">
@@ -38,65 +35,88 @@
 	}
 
 	.material-symbols-outlined.search {
-		color: var(--background-color);
+		transition: color 0.2s ease-in;
 	}
 
 	.navbar {
-		width: fit-content;
+		width: 100%;
 		display: flex;
-		flex-flow: row;
 		justify-content: space-between;
-		align-items: center;
-		background: rgba(31, 31, 31, 0.5); /* semi-transparent */
-		box-shadow: 0px 0px 8px var(--dark-black);
-		padding: 10px;
-		gap: 12px;
-		border: 1px solid var(--light-gray);
-		border-radius: 12px;
+		align-items: center; 
+		padding: 0px 2%; 
 	}
 
-	.navbar:hover {
+	.search-bar:hover {
+		background-color: rgb(255, 255, 255);
 		box-shadow: 0px 0px 12px var(--dark-black);
+		color: var(--dark-black);
 	}
 
 	.navcontainer {
-		align-items: center;
 		display: flex;
-		flex-flow: row;
-		gap: 10px;
+		align-items: center;
 	}
 
 	.navcontainer.middle {
-		width: 50%;
-		min-width: 200px;
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
 	}
 
 	.search-bar {
-		background-color: white;
+		background-color: rgba(131, 131, 131, 0.5);
 		border-radius: 8px;
-		padding-left: 8px;
-		padding-right: 8px;
+		padding: 2px 8px;
 		align-items: center;
 		display: flex;
-		width: 50vw;
+		width: 90%;
+		max-width: 580px; /* Max width to prevent search bar from stretching too much */
+		height: 36px;
+		transition: background-color 0.3s ease-in;
 	}
 
 	.search-bar input {
-		color: var(--dark-black);
+		background-color: transparent;
+		color: white;
 		border: none;
 		border-radius: 8px;
 		outline: none;
 		width: 100%;
-		height: 36px;
+		height: 100%;
+		font-weight: bold;
+		font-size: larger;
+	}
+
+	.search-bar:hover input {
+		color: black;
+	}
+
+	.search-bar:hover .material-symbols-outlined.search {
+		color: var(--dark-black);
 	}
 
 	/* Responsive design */
-
 	@media (max-width: 768px) {
-		/* TODO: Adjust the navbar for smaller screens */
+		.navbar {
+			padding: 8px 8px;
+		}
+		.search-bar {
+			max-width: 500px; /* Slightly reduce search bar width on medium screens */
+		}
 	}
 
 	@media (max-width: 480px) {
-		/* TODO: Adjust the navbar for smaller screens */
+		.navbar {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.navcontainer.middle {
+			width: 100%;
+		}
+
+		.search-bar {
+			width: 90%; 
+		}
 	}
 </style>
