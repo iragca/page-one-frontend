@@ -1,4 +1,7 @@
 <script lang="ts">
+	import OpenSidebarButton from './buttons/OpenSidebarButton.svelte';
+	import CloseSidebarButton from './buttons/CloseSidebarButton.svelte';
+
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
 	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
 	let { response } = $props();
@@ -12,12 +15,14 @@
 <div class="grid-container">
 	{#if !closeSidebar}
 		<button class="close-sidebar" onclick={toggleSidebar}>
-			<span class="material-symbols-outlined"> arrow_menu_close </span>
+			<CloseSidebarButton />
 		</button>
-		<div class="grid-item sidebar"><SideBar /></div>
+		<div class="grid-item sidebar">
+			<SideBar />
+		</div>
 	{:else}
 		<button class="open-sidebar" onclick={toggleSidebar}>
-			<span class="material-symbols-outlined"> arrow_menu_open</span>
+			<OpenSidebarButton />
 		</button>
 	{/if}
 	<div class="grid-item bookbrowser"><BookBrowser {response} /></div>
@@ -25,6 +30,7 @@
 
 <style>
 	.grid-container {
+		position: relative;
 		display: flex;
 		height: 100vh;
 		width: 100vw;
@@ -51,39 +57,10 @@
 	}
 
 	.close-sidebar {
-		position: absolute;
-		top: 10px;
-		left: 224px;
-		width: 40px;
-		height: 40px;
-		cursor: pointer; /* Change cursor to pointer */
-		background-color: rgb(83, 82, 82);
-		border: 2px solid var(--dark-gray);
-		border-radius: 20%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-		z-index: 10;
-	}
-
-	.close-sidebar:hover {
-		background-color: rgb(31, 31, 31);
-		transition: background-color 0.3s ease;
+		all: unset;
 	}
 
 	.open-sidebar {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		width: 40px;
-		height: 40px;
-		cursor: pointer; /* Change cursor to pointer */
-		background-color: rgb(83, 82, 82);
-		border: 2px solid var(--dark-gray);
-		border-radius: 20%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-		z-index: 10;
-	}
-
-	.material-symbols-outlined {
-		color: var(--icon-color);
+		all: unset;
 	}
 </style>
