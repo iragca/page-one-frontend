@@ -60,10 +60,4 @@
 		justify-content: space-evenly;
 		align-items: center;
 	}
-
-	.options-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
 </style>
