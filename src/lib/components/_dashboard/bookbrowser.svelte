@@ -3,6 +3,7 @@
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
+	import SimpleSearchBar from '../searchbars/SimpleSearchBar.svelte';
 
 	let { response } = $props();
 	let viewMode = $state('grid');
@@ -24,7 +25,7 @@
 	<div class="grid">
 		<div class="navbar-container">
 			<slot /> <!-- reserved for sidebar toggle -->
-			<NavBar />
+			<SimpleSearchBar />
 			<Options {toggleView} {viewMode} />
 		</div>
 		{#if fetchFailed}
