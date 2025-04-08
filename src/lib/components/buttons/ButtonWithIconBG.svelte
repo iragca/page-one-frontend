@@ -1,6 +1,6 @@
 <div class="button-container">
 	<div class="sort button">
-		<span class="material-symbols-outlined"> sort </span>
+		<span class="material-symbols-outlined"> <slot /> </span>
     </div>
 </div>
 
