@@ -24,11 +24,8 @@
 	<div class="grid">
 		<div class="navbar-container">
 			<NavBar />
-		</div>
-		<div class="options-container">
 			<Options {toggleView} {viewMode} />
 		</div>
-
 		{#if fetchFailed}
 			<div class="error-message">{errorMessage}</div>
 		{:else if books.length === 0}
@@ -59,7 +56,7 @@
 
 	.navbar-container {
 		display: flex;
-		justify-content: center;
+		justify-content: space-evenly;
 		align-items: center;
 	}
 
