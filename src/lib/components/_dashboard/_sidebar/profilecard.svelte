@@ -59,7 +59,6 @@
 	}
 	.grid {
 		border-bottom: var(--background-color-2) 1px solid;
-		box-shadow: 0px 0px 5px var(--dark-black);
 		display: flex;
 		flex-direction: row;
 	}
