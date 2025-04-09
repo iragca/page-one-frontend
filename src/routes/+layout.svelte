@@ -1,10 +1,14 @@
 <script lang="ts">
-	import OpenSidebarButton from './buttons/OpenSidebarButton.svelte';
-	import CloseSidebarButton from './buttons/CloseSidebarButton.svelte';
+	import type { Snippet } from 'svelte';
+	import type { LayoutData } from './$types';
+
+	import OpenSidebarButton from '$lib/components/buttons/OpenSidebarButton.svelte';
+	import CloseSidebarButton from '$lib/components/buttons/CloseSidebarButton.svelte';
 
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
-	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
-	let { response } = $props();
+
+	let { data, children }: { data: LayoutData; children: Snippet } = $props();
+
 	let closeSidebar = $state(false);
 
 	let toggleSidebar = () => {
@@ -26,7 +30,8 @@
 				<OpenSidebarButton />
 			</button>
 		{/if}
-		<div class="grid-item bookbrowser"><BookBrowser {response} /></div>
+		<div class="grid-item bookbrowser">{@render children()}
+        </div>
 	</div>
 </div>
 
