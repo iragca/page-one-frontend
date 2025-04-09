@@ -26,8 +26,7 @@
 		display: flex;
 		flex-flow: row;
 		justify-content: space-between;
-		width: 80%;
-		max-width: 800px;
+		width: 100%;
 		align-items: center;
 		background: rgba(31, 31, 31, 0.5); /* semi-transparent */
 		box-shadow: 0px 0px 4px var(--dark-black);
