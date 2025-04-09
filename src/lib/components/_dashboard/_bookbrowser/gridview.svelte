@@ -13,7 +13,7 @@
 	.book-grid {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		flex-wrap: wrap;
 		gap: 12px;
 	}

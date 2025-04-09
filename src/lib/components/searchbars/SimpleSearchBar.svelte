@@ -15,7 +15,7 @@
 		align-items: center;
 		display: flex;
 		width: 50vw;
-		max-width: 400px;
+		max-width: 380px;
 		height: 36px;
 		gap: 8px;
 		backdrop-filter: blur(12px); /* the blur gives the frosted effect */

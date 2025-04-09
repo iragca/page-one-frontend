@@ -74,7 +74,7 @@
 		max-height: 50px;
 		border-radius: 50%;
 		overflow: hidden;
-		margin: 8px;
+		margin: 12px;
 		object-fit: cover;
 	}
 
@@ -97,7 +97,7 @@
 		align-items: flex-start;
 		text-align: left;
 		justify-content: center;
-		padding: 10px;
+		padding: 8px;
 	}
 
 	.user-name {

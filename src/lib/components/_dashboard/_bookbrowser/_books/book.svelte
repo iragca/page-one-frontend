@@ -58,6 +58,7 @@
             rgba(0, 0, 0, 0.7) 100%
         );
         z-index: 2;
+		border-radius: 4px;
     }
 
 	.book-image {
@@ -67,5 +68,6 @@
 		overflow: hidden;
 		object-fit: cover;
 		z-index: 1;
+		border-radius: 8px;
 	}
 </style>
