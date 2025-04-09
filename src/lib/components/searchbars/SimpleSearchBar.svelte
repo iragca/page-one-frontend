@@ -1,6 +1,6 @@
 <div class="search-bar">
-	<input class="text-box" type="text" placeholder="Search..." />
 	<span class="material-symbols-outlined search">search</span>
+	<input class="text-box" type="text" placeholder="Search..." />
 	<div class="icon">
 		<span class="material-symbols-outlined option">manage_search</span>
 	</div>
@@ -14,17 +14,17 @@
 		padding-right: 8px;
 		align-items: center;
 		display: flex;
-		width: 50vw;
-		max-width: 380px;
-		height: 36px;
+		width: 64vw;
+		max-width: 400px;
+		height: 42px;
 		gap: 8px;
 		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
 		-webkit-backdrop-filter: blur(12px); /* for Safari */
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	}
 
 	.search-bar:hover {
 		background-color: rgba(255, 255, 255, 0.2);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	}
 
 	.search-bar:focus-within {
@@ -41,6 +41,8 @@
 		height: 100%;
 		text-align: left;
 		color: white;
+		font-weight: bold;
+		font-size: medium;
 	}
 
 	.text-box::placeholder {
