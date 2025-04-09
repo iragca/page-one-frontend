@@ -1,16 +1,7 @@
 <script>
-	import Dashboard from '$lib/components/dashboard.svelte';
+	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
 
 	let response = $props();
-
 </script>
 
-<div class="background">
-	<Dashboard {response} />
-</div>
-
-<style>
-	.background {
-		background-color: var(--background-color);
-	}
-</style>
+<BookBrowser {response} />
