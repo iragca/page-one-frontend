@@ -113,13 +113,21 @@
 		text-align: left;
 		overflow: hidden;
 		font-weight: 400;
-        margin-top: 8px;
+        margin-top: 16px;
 		max-height: 100px;
+		margin-right: 16px;
+		line-clamp: 4;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		max-height: 7.5em;
+		white-space: normal;
 	}
 
 	@media (min-width: 1200px) {
 		.book-list {
-			max-width: 900px;
+			max-width: 1200px;
 		}
 	}
 </style>

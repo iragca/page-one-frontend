@@ -54,7 +54,7 @@
 	.grid {
 		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
-		gap: 20px;
+		gap: 18px;
 	}
 
 	.navbar-container {
