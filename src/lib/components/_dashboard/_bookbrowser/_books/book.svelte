@@ -15,7 +15,7 @@
 		<div class="layer book-icon" transition:fade={transitionOptions}><span class="material-symbols-outlined"> menu_book </span></div>
 		<div class="layer vignette" transition:fade={transitionOptions}></div>
 	{/if}
-	<img class="layer book-image" src={cover_photo} alt={title} />
+	<img class="layer book-image" src={cover_photo || "/images/no-cover-retrieved.png"} alt={title} />
 </button>
 
 <style>
