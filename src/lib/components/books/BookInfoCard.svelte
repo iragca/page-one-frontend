@@ -22,7 +22,7 @@
 		<hr class="divider" />
 		<div class="body">
 			<div class="metadata">
-                {@render metadataPair('GENRE', book.genre)}
+				{@render metadataPair('GENRE', book.genre)}
 				{@render metadataPair('PUBLISHER', book.publisher)}
 				{@render metadataPair('PUBLISHED', book.year_published)}
 				{@render metadataPair('ISBN', book.isbn_issn)}
@@ -59,7 +59,7 @@
 
 	.body {
 		padding-left: 8px;
-        padding-right: 8px;
+		padding-right: 8px;
 		max-width: 100%;
 	}
 
@@ -72,12 +72,24 @@
 		max-width: 100%;
 	}
 
-	.left, .right, .body {
-        display: flex;
-        flex-direction: column;
+	.left,
+	.right,
+	.body {
+		display: flex;
+		flex-direction: column;
 		padding-left: 8px;
 	}
 
+	.left {
+		gap: 16px;
+	}
+
+	.title {
+		all: unset;
+		font-size: 1.5em;
+		font-weight: bold;
+		text-align: left;
+	}
 	.author {
 		all: unset;
 		font-size: 1.2em;
