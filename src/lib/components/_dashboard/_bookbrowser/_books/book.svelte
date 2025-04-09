@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { fade, fly } from 'svelte/transition';
-	let { title } = $props();
+    import { fade } from 'svelte/transition';
+	let { title, cover_photo } = $props();
 
 	let hovering = $state(false);
 
@@ -15,7 +15,7 @@
 		<div class="layer book-icon" transition:fade={transitionOptions}><span class="material-symbols-outlined"> menu_book </span></div>
 		<div class="layer vignette" transition:fade={transitionOptions}></div>
 	{/if}
-	<img class="layer book-image" src="https://placehold.co/400x600" alt={title} />
+	<img class="layer book-image" src={cover_photo} alt={title} />
 </button>
 
 <style>
