@@ -24,9 +24,9 @@
 <div class="background">
 	<div class="grid">
 		<div class="navbar-container">
-			<slot /> <!-- reserved for sidebar toggle -->
-			<SimpleSearchBar />
-			<Options {toggleView} {viewMode} />
+			<div class="container left"><slot /></div>
+			<div class="container middle"><SimpleSearchBar /></div>
+			<div class="container right"><Options {toggleView} {viewMode} /></div>
 		</div>
 		{#if fetchFailed}
 			<div class="error-message">{errorMessage}</div>
@@ -41,24 +41,78 @@
 </div>
 
 <style>
+	.background {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		height: 100vh;
+		margin: 0px;
+		background:
+			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
+			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
+	}
 	.grid {
 		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
 		gap: 20px;
 	}
 
-	.background {
-		height: 100vh;
-		margin: 0px;
-		overflow: auto;
-		background:
-			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
-			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
-	}
-
 	.navbar-container {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.left {
+		position: absolute;
+		left: 8%;
+		flex: 1;
+	}
+	.middle {
+		flex: 2;
+	}
+	.right {
+		position: absolute;
+		right: 8%;
+		flex: 1;
+	}
+
+	@media (max-width: 768px) {
+		.left,
+		.right {
+			position: static;
+			flex: 1;
+		}
+
+		.left {
+			justify-content: left;
+		}
+
+		.right {
+			justify-content: right;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.left,
+		.right {
+			position: static;
+			flex: 1;
+		}
+
+		.left {
+			justify-content: left;
+		}
+
+		.right {
+			justify-content: right;
+		}
 	}
 </style>
