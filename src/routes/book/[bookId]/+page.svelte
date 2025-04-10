@@ -50,7 +50,6 @@
 	}
 
 	.body {
-		max-height: fit-content;
 		max-width: 100%;
 	}
 </style>

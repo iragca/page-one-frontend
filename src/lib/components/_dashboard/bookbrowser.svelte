@@ -45,6 +45,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
+		height: 100%;
 		margin: 0px;
 		background:
 			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
@@ -54,6 +55,7 @@
 		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
 		gap: 18px;
+		height: 100%;
 	}
 
 	.navbar-container {

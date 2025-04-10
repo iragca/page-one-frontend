@@ -28,11 +28,14 @@
 <style>
 	.background {
 		background-color: var(--background-color);
+		height: 100%;
+		min-height: 100vh;
 	}
 
 	.grid-container {
-		position: relative;
 		display: flex;
+		height: 100%;
+		min-height: 100vh;
 		width: 100vw;
 		background:
 			radial-gradient(circle at 20% 20%, var(--background-color-2), transparent 70%),
@@ -53,13 +56,5 @@
 	}
 	.grid-item.bookbrowser {
 		flex: 1; /* Takes the remaining space */
-	}
-
-	.close-sidebar {
-		all: unset;
-	}
-
-	.open-sidebar {
-		all: unset;
 	}
 </style>
