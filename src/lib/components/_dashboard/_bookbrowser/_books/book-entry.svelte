@@ -4,7 +4,7 @@
 </script>
 
 <div class="book-container">
-	<Book {title} />
+	<slot {Book} />
 	<div class="book-title">{title}</div>
 	<div class="book-author">{author}</div>
 </div>

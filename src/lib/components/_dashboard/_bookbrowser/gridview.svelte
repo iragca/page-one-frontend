@@ -1,11 +1,13 @@
 <script lang="ts">
+	import BookEntry from './_books/book-entry.svelte';
 	let { books } = $props();
-	import Book from './_books/book-entry.svelte';
 </script>
 
 <div class="book-grid">
 	{#each books as book}
-		<Book {...book}/>
+		<BookEntry let:Book {...book}>
+			<Book {...book}></Book>
+		</BookEntry>
 	{/each}
 </div>
 

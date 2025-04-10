@@ -3,10 +3,17 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="background">
-	<img class="error-image" src="/images/500.png" alt="500 Error" />
-    <p>{$page.status}: {$page.error?.message}</p>
-</div>
+{#if $page.status === 404}
+	<div class="background _404">
+		<img class="error-image" src="/images/404-cute!.png" alt="404 Error" />
+		<p>{$page.status}: {$page.error?.message}</p>
+	</div>
+{:else}
+	<div class="background _500">
+		<img class="error-image" src="/images/500.png" alt="500 Error" />
+		<p>{$page.status}: {$page.error?.message}</p>
+	</div>
+{/if}
 
 <style>
 	p {
@@ -29,5 +36,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	._404 {
+		background-color: #32312f;
 	}
 </style>
