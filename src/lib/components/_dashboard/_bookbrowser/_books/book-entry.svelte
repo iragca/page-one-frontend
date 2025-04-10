@@ -4,7 +4,9 @@
 </script>
 
 <div class="book-container">
-	<slot {Book} />
+	<div class="book-image">
+		<slot {Book} />
+	</div>
 	<div class="book-title">{title}</div>
 	<div class="book-author">{author}</div>
 </div>
@@ -17,6 +19,11 @@
 		padding: 18px;
 		gap: 5px;
 		max-width: 150px;
+	}
+
+	.book-image {
+		height: 225px;
+		width: 150px;
 	}
 
 	.book-title {
