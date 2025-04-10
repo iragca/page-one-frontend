@@ -4,11 +4,12 @@
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
 	import SimpleSearchBar from '../bars/SimpleSearchBar.svelte';
+	import { viewMode } from '$lib/stores/viewmode';
 
 	let { response } = $props();
-	let viewMode = $state('grid');
+
 	let toggleView = () => {
-		viewMode = viewMode === 'grid' ? 'list' : 'grid';
+		$viewMode = $viewMode === 'grid' ? 'list' : 'grid';
 	};
 
 	let books = $state(response.data.books);
@@ -32,7 +33,7 @@
 			<div class="error-message">{errorMessage}</div>
 		{:else if books.length === 0}
 			<div class="no-books">No books available</div>
-		{:else if viewMode === 'list'}
+		{:else if $viewMode === 'list'}
 			<Listview {books} />
 		{:else}
 			<Gridview {books} />
