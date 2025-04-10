@@ -15,7 +15,7 @@
 	.book-grid {
 		display: flex;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: center;
 		flex-wrap: wrap;
 		gap: 12px;
 	}

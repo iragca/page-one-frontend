@@ -9,13 +9,6 @@
 
 ## Development
 
-
-> [!IMPORTANT]
-> Required stuff
-> - Docker
-> - .env file with the BACKEND_API_URL 
-
-
 Start the [backend](https://github.com/iragca/page-one) using Docker. 
 You must have Docker [installed](https://docs.docker.com/engine/install/) for this.
 
