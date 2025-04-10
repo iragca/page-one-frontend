@@ -6,29 +6,19 @@
 	import CloseSidebarButton from '$lib/components/buttons/CloseSidebarButton.svelte';
 
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
+	import { closeSidebar } from '$lib/stores/sidebar';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
-	let closeSidebar = $state(false);
 
-	let toggleSidebar = () => {
-		closeSidebar = !closeSidebar;
-	};
 </script>
 
 <div class="background">
 	<div class="grid-container">
-		{#if !closeSidebar}
-			<button class="close-sidebar" onclick={toggleSidebar}>
-				<CloseSidebarButton />
-			</button>
+		{#if !$closeSidebar}
 			<div class="grid-item sidebar">
 				<SideBar />
 			</div>
-		{:else}
-			<button class="open-sidebar" onclick={toggleSidebar}>
-				<OpenSidebarButton />
-			</button>
 		{/if}
 		<div class="grid-item bookbrowser">{@render children()}
         </div>
@@ -43,9 +33,7 @@
 	.grid-container {
 		position: relative;
 		display: flex;
-		height: 100vh;
 		width: 100vw;
-		overflow: hidden; /* Prevents overflow beyond the container */
 		background:
 			radial-gradient(circle at 20% 20%, var(--background-color-2), transparent 70%),
 			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);

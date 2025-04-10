@@ -14,7 +14,7 @@
 		align-items: center;
 		text-align: center;
 		color: white;
-		padding: 20px;
+		padding: 18px;
 		gap: 5px;
 		max-width: 150px;
 	}
@@ -24,6 +24,7 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		font-weight: 600;
+		margin-top: 8px;
 		padding-left: 5px;
 		max-width: 100%;
 	}

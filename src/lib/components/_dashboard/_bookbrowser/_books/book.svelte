@@ -43,6 +43,7 @@
 		width: 150px;
 		overflow: hidden;
 		object-fit: fill;
+		border-radius: 4px;
 	}
 
 	.layer {
@@ -69,6 +70,7 @@
 		height: 100%;
 		background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.7) 100%);
 		z-index: 2;
+		border-radius: 4px;
 	}
 
 
@@ -79,5 +81,6 @@
 		overflow: hidden;
 		object-fit: cover;
 		z-index: 1;
+		border-radius: 4px;
 	}
 </style>

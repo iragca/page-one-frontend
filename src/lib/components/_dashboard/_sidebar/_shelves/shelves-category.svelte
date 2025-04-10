@@ -14,6 +14,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        align-items: flex-start;
         text-align: left;
         gap: 0.5rem;
         margin: 20px;
