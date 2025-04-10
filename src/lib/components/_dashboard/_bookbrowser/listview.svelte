@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Book from './_books/book.svelte';
+
 	import { faker } from '@faker-js/faker';
 	let { books } = $props();
 </script>
@@ -8,8 +10,7 @@
 		{#each books as book}
 			<div class="book-container">
 				<div class="book">
-                    <!-- <img class="book-img" src={book.cover_photo} alt={book.title} /> -->
-					<img class="book-img" src="https://placehold.co/400x600" alt={book.title} />
+                    <Book {...book} />
 				</div>
 				<div class="book-details">
 					<div class="book-title">
@@ -39,7 +40,6 @@
 		display: flex;
 		justify-content: center;
 		padding: 5%;
-        outline: olive;
 	}
 	.book-list {
 		display: flex;
@@ -55,7 +55,6 @@
 		margin-right: 12px;
 		height: 100%;
 		box-sizing: border-box;
-		overflow: hidden;
         background-color: #cccccc3b;
 		padding:8px;
 		border-radius:8px;
@@ -65,8 +64,6 @@
 		width: 100px;
 		height: 100%;
 		flex-shrink: 0;
-		border: 1px solid #ccc;
-		overflow: hidden;
 		border-radius: 4px;
 	}
 

@@ -39,12 +39,11 @@
 		display: grid;
 		place-items: center;
 		cursor: pointer;
-		height: 225px;
-		width: 150px;
-		overflow: hidden;
+		height: 100%;
+		width: 100%;
 		object-fit: fill;
 		border-radius: 4px;
-		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.64);
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, .64);
 	}
 
 	.layer {
@@ -78,8 +77,6 @@
 	.book-image {
 		height: 100%;
 		width: 100%;
-		border: 1px solid #ccc;
-		overflow: hidden;
 		object-fit: cover;
 		z-index: 1;
 		border-radius: 4px;
