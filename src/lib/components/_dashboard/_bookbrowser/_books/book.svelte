@@ -78,5 +78,6 @@
 		overflow: hidden;
 		object-fit: cover;
 		z-index: 1;
+		border-radius: 8px;
 	}
 </style>

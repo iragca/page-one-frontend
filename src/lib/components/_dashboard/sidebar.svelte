@@ -25,6 +25,7 @@
 
 	.background {
 		height: 100vh;
+		width: 320px;
 		background-color: rgb(31, 31, 31, 0.5);
         border-right: 2px solid var(--background-color-3);
 	}

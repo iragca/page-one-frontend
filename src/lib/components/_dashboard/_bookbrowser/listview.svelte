@@ -38,7 +38,7 @@
 	.list-container {
 		display: flex;
 		justify-content: center;
-		padding-bottom: 5%;
+		padding: 5%;
         outline: olive;
 	}
 	.book-list {
@@ -53,11 +53,12 @@
 		gap: 12px;
 		margin-left: 12px;
 		margin-right: 12px;
-		max-width: 100%;
-		height: 150px;
+		height: 100%;
 		box-sizing: border-box;
 		overflow: hidden;
-        border-bottom: 1px solid #ccc;
+        background-color: #cccccc3b;
+		padding:8px;
+		border-radius:8px;
 	}
 
 	.book {
@@ -66,6 +67,7 @@
 		flex-shrink: 0;
 		border: 1px solid #ccc;
 		overflow: hidden;
+		border-radius: 4px;
 	}
 
 	.book-img {
@@ -98,6 +100,7 @@
 
 	.book-title {
 		font-weight: 600;
+		font-size: medium;
 	}
 
 	.book-author {
@@ -108,15 +111,23 @@
 
 	.book-description {
 		text-align: left;
-		overflow: auto;
+		overflow: hidden;
 		font-weight: 400;
-        margin-top: 8px;
+        margin-top: 16px;
 		max-height: 100px;
+		margin-right: 16px;
+		line-clamp: 4;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		max-height: 7.5em;
+		white-space: normal;
 	}
 
 	@media (min-width: 1200px) {
 		.book-list {
-			max-width: 900px;
+			max-width: 1200px;
 		}
 	}
 </style>

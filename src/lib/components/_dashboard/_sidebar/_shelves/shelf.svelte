@@ -11,14 +11,17 @@
 		display: flex;
 		flex-direction: column;
 		text-align: left;
-		gap: 0.5rem;
-		padding: 0.5rem;
+		gap: 0.2rem;
+		padding: 0.8rem;
 		border-radius: 0 4px 4px 0;
-        color: var(--light-gray)
+        color: var(--light-gray);
+		font-size: medium;
+		font-weight: bolder;
 	}
 
 	.shelf:hover {
 		background-color: var(--background-color-2);
+		border-radius: 4px;
 		cursor: pointer;
         color: white;
 	}
