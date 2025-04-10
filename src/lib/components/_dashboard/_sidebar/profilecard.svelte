@@ -59,6 +59,7 @@
 	}
 	.grid {
 		border-bottom: var(--background-color-2) 1px solid;
+		box-shadow: 0px 0px 5px var(--dark-black);
 		display: flex;
 		flex-direction: row;
 	}
@@ -74,7 +75,7 @@
 		max-height: 50px;
 		border-radius: 50%;
 		overflow: hidden;
-		margin: 12px;
+		margin: 8px;
 		object-fit: cover;
 	}
 
@@ -97,7 +98,7 @@
 		align-items: flex-start;
 		text-align: left;
 		justify-content: center;
-		padding: 8px;
+		padding: 10px;
 	}
 
 	.user-name {
