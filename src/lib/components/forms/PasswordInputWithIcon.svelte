@@ -1,28 +1,10 @@
 <script lang="ts">
-	let { icon, placeholder, visOff, name } = $props();
-
-	let toggle = () => {
-		visOff = !visOff;
-	};
-
-	let input = $state('')
-
+	let { icon, parentComponent } = $props();
 </script>
 
 <div class="background">
 	<span class="material-symbols-outlined"> {icon} </span>
-
-	{#if visOff}
-		<input class="text-box" type="password" placeholder={placeholder} bind:value={input} {name} required/>
-		<button class="visibility one" onclick={toggle}>
-			<span class="material-symbols-outlined"> visibility_off </span>
-		</button>
-	{:else}
-		<input class="text-box" type="text" placeholder={placeholder}  bind:value={input} {name} required/>
-		<button class="visibility two" onclick={toggle}>
-			<span class="material-symbols-outlined"> visibility </span>
-		</button>
-	{/if}
+	{@render parentComponent()}
 </div>
 
 <style>
