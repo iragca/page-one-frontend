@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { LayoutData } from './$types';
+	import type { LayoutData } from '../$types';
 
 	import OpenSidebarButton from '$lib/components/buttons/OpenSidebarButton.svelte';
 	import CloseSidebarButton from '$lib/components/buttons/CloseSidebarButton.svelte';
