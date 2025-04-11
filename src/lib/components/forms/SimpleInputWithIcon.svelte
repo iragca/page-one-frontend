@@ -19,7 +19,7 @@
 		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
 		-webkit-backdrop-filter: blur(12px); /* for Safari */
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        padding: 8px;
+        padding-left: 8px;
 	}
 
     .background:focus-within {
@@ -33,6 +33,7 @@
 
     .text-box {
         all: unset;
+        height: 36px;
         width: 100%;
     }
     .text-box::placeholder {
