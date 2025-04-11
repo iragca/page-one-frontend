@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { icon, text, type = 'button', disabled = "" } = $props();
+	let { icon, text, type = 'button', disabled = false } = $props();
 </script>
 
 <button class="background" {type} {disabled}>

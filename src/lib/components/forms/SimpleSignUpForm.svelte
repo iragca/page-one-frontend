@@ -20,8 +20,8 @@
 
 	let disableCreateAccount = $derived(
 		usernameInput.length > 0 && emailInput.length > 0 && passwordInput.length >= 8 && !differentPass
-			? ''
-			: 'disabled'
+			? false
+			: true
 	);
 
 	let toggle = () => {

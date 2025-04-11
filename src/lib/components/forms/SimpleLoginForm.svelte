@@ -11,6 +11,11 @@
 		hidePassword = !hidePassword;
 	};
 
+	let usernameInput = $state('');
+	let passwordInput = $state('');
+
+	let disableLogin = $derived(usernameInput.length > 0 && passwordInput.length >= 8 ? false : true);
+
 	let { form } = $props();
 </script>
 
@@ -24,12 +29,12 @@
 	</div>
 	<div class="bottom">
 		<SimpleLinkButton icon="person_add" text="Signup" href="/signup" />
-		<SimpleButtonWithText icon="login" text="Login" type="submit" />
+		<SimpleButtonWithText icon="login" text="Login" type="submit" disabled={disableLogin} />
 	</div>
 </form>
 
 {#snippet username()}
-	<input type="text" name="username" placeholder="Username" class="text-box" required />
+	<input type="text" name="username" placeholder="Username" class="text-box" required bind:value={usernameInput} />
 {/snippet}
 
 {#snippet password()}
@@ -40,6 +45,7 @@
 		class="text-box"
 		required
 		minlength="8"
+		bind:value={passwordInput}
 	/>
 	<button type="button" class="visibility two" onclick={toggle}>
 		<span class="material-symbols-outlined"> {iconPass} </span>
