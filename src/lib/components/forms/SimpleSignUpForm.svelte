@@ -4,6 +4,8 @@
 	import SimpleLinkButton from '$lib/components/buttons/SimpleLinkButton.svelte';
 	import AuthError from '../errors/AuthError.svelte';
 
+	let { form } = $props();
+
 	let hidePassword = $state(true);
 	let iconPass = $derived(hidePassword ? 'visibility' : 'visibility_off');
 	let inputType = $derived(hidePassword ? 'password' : 'text');
@@ -33,6 +35,9 @@
 	<div class="top">
 		{#if differentPass && confirmPasswordInput}
 			<AuthError error_message="Passwords do not match" />
+		{/if}
+		{#if form?.error}
+			<AuthError error_message={form.error} />
 		{/if}
 		<SimpleInputWithIcon icon="" parentComponent={username} />
 		<SimpleInputWithIcon icon="" parentComponent={email} />
