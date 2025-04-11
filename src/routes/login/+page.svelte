@@ -2,7 +2,7 @@
     import SimpleLoginForm from '$lib/components/forms/SimpleLoginForm.svelte';
     import type { PageData } from './$types';
 
-    let { data }: { data: PageData } = $props();
+    let { data, form }: { data: PageData, form: any } = $props();
 </script>
 
 <div class="background">
@@ -14,7 +14,7 @@
                     <div class="title">Page One</div>
                 </div>
                 <div class="form">
-                    <SimpleLoginForm />
+                    <SimpleLoginForm {form}/>
                 </div>
                 <div class="footer">
                     Page One © 2025 - All Rights Reserved

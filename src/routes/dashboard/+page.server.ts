@@ -3,6 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
 
+    // Fetch the list of all books from the backend
     try {
         const response = await fetch(`${BACKEND_API_URL}/books`)
 

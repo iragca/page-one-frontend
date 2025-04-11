@@ -13,8 +13,6 @@ export const signup = async (username: string, email: string, password: string) 
 		})
 	});
 
-	console.log('Response:');
-
 	if (response.ok) {
 		return await response.json();
 	} else {

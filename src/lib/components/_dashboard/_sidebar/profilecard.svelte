@@ -4,6 +4,7 @@
 	import Tooltip from '$lib/components/tooltip.svelte';
 	import ModalButton from './_profilecard/modal-button.svelte';
 	import ModalDivider from './_profilecard/modal-divider.svelte';
+	import { user } from '$lib/stores/user';
 
 	let showModal = $state(false);
 	let mouseX = $state(0);
@@ -29,7 +30,7 @@
 			<img src={faker.image.avatarGitHub()} alt="user avatar" />
 		</button>
 		<div class="user-details">
-			<div class="user-name">{faker.internet.displayName()}</div>
+			<div class="user-name">{$user.username}</div>
 			<Tooltip title="Copy to clipboard">
 				<button class="user-id" onclick={() => copyToClipboard(userId, copied)}>{userId}</button>
 			</Tooltip>
