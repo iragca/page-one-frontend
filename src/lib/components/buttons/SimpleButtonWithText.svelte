@@ -1,8 +1,8 @@
 <script lang="ts">
-	let { icon, text, type = 'button' } = $props();
+	let { icon, text, type = 'button', disabled = false } = $props();
 </script>
 
-<button class="background" {type}>
+<button class="background" {type} {disabled}>
 	<span class="material-symbols-outlined"> {icon} </span>
 	<div class="text-box">{text}</div>
 </button>
@@ -36,6 +36,11 @@
 		box-shadow: 0px 0px 8px var(--dark-black);
 		transition: 0s;
 	}
+
+    .background:disabled {
+        color: var(--light-gray);
+        cursor: not-allowed;
+    }
 
     .material-symbols-outlined {
 

@@ -15,6 +15,8 @@ export const signup = async (username: string, email: string, password: string) 
 
 	if (response.ok) {
 		return await response.json();
+	} else if (response.status === 409) {
+		throw new Error('User already exists');
 	} else {
 		throw new Error('Signup failed');
 	}

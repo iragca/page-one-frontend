@@ -1,10 +1,10 @@
 <script lang="ts">
-	let { icon, placeholder, type = "text", name} = $props();
+	let { icon, parentComponent } = $props();
 </script>
 
 <div class="background">
 	<span class="material-symbols-outlined"> {icon} </span>
-	<input class="text-box" {type} {placeholder} {name} required/>
+	{@render parentComponent()}
 </div>
 
 <style>
@@ -28,15 +28,6 @@
 	}
 
     .material-symbols-outlined {
-        color: var(--light-gray);
-    }
-
-    .text-box {
-        all: unset;
-        height: 36px;
-        width: 100%;
-    }
-    .text-box::placeholder {
         color: var(--light-gray);
     }
 </style>
