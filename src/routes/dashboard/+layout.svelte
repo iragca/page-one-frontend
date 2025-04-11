@@ -7,10 +7,11 @@
 
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
 	import { closeSidebar } from '$lib/stores/sidebar';
+	import { user } from '$lib/stores/user';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
-
+	$user = { ...data };
 </script>
 
 <div class="background">
@@ -20,8 +21,7 @@
 				<SideBar />
 			</div>
 		{/if}
-		<div class="grid-item bookbrowser">{@render children()}
-        </div>
+		<div class="grid-item bookbrowser">{@render children()}</div>
 	</div>
 </div>
 
