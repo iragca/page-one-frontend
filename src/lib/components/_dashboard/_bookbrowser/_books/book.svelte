@@ -9,7 +9,7 @@
 	};
 </script>
 
-<a href={`book/${_id}`} class="book-link">
+<a href={`dashboard/book/${_id}`} class="book-link">
 	<button
 		class="book"
 		onmouseenter={() => (hovering = true)}
