@@ -2,7 +2,7 @@
 	import SimpleInputWithIcon from './SimpleInputWithIcon.svelte';
 	import SimpleButtonWithText from '$lib/components/buttons/SimpleButtonWithText.svelte';
 	import SimpleLinkButton from '$lib/components/buttons/SimpleLinkButton.svelte';
-	import LoginError from '../errors/LoginError.svelte';
+	import AuthError from '../errors/AuthError.svelte';
 
 	let hidePassword = $state(true);
 	let iconPass = $derived(hidePassword ? 'visibility' : 'visibility_off');
@@ -17,7 +17,7 @@
 <form class="background" method="POST">
 	<div class="top">
 		{#if form?.error}
-			<LoginError error_message={form.error} />
+			<AuthError error_message={form.error} />
 		{/if}
 		<SimpleInputWithIcon icon="" parentComponent={username} />
 		<SimpleInputWithIcon icon="" parentComponent={password} />
