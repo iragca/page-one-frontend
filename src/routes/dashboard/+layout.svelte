@@ -27,7 +27,6 @@
 
 <style>
 	.background {
-		background-color: var(--background-color);
 		height: 100%;
 		min-height: 100vh;
 	}
@@ -37,18 +36,13 @@
 		height: 100%;
 		min-height: 100vh;
 		width: 100vw;
-		background:
-			radial-gradient(circle at 20% 20%, var(--background-color-2), transparent 70%),
-			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
 	}
 
 	.grid-item {
 		position: relative;
-		background-color: var(--background-color);
 		text-align: center;
 		max-width: 100%; /* Ensures items do not exceed their fraction size */
 		box-sizing: border-box; /* Ensure padding doesn't cause overflow */
-		background-color: transparent;
 	}
 
 	.grid-item.sidebar {
