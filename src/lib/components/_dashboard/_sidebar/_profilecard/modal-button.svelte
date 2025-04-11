@@ -2,7 +2,7 @@
 	let { action, name, icon } = $props();
 </script>
 
-<button class="button">
+<button class="button" onclick={action}>
 	<div class="icon">
 		<span class="material-symbols-outlined">{icon}</span>
 	</div>

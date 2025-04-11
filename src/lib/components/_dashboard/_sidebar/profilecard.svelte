@@ -5,6 +5,7 @@
 	import ModalButton from './_profilecard/modal-button.svelte';
 	import ModalDivider from './_profilecard/modal-divider.svelte';
 	import { user } from '$lib/stores/user';
+	import { goto } from '$app/navigation';
 
 	let showModal = $state(false);
 	let mouseX = $state(0);
@@ -41,7 +42,7 @@
 {#if showModal}
 	<button class="modal" style="top: {mouseY}px; left: {mouseX}px;" onmouseleave={closeModal}>
 		<ModalButton action={() => {}} name="Account" icon="account_circle" />
-		<ModalButton action={() => {}} name="Logout" icon="logout" />
+		<ModalButton action={() => {goto('/logout')}} name="Logout" icon="logout" />
 		<ModalDivider />
 		<ModalButton action={() => {}} name="Settings" icon="settings" />
 	</button>
