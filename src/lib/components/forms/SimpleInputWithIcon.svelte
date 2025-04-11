@@ -4,7 +4,7 @@
 
 <div class="background">
 	<span class="material-symbols-outlined"> {icon} </span>
-	<input class="text-box" {type} {placeholder} {name} />
+	<input class="text-box" {type} {placeholder} {name} required/>
 </div>
 
 <style>
