@@ -8,7 +8,7 @@ export const load = (async () => {
 
 
 export const actions = {
-    default: async ({ request }) => {
+    default: async ({ cookies, request }) => {
         const data = await request.formData();
 
         try {
@@ -16,6 +16,11 @@ export const actions = {
                 data.get('username') as string,
                 data.get('password') as string
             );
+
+            // Set the cookie to indicate the user is logged in
+            cookies.set('loggedIn', 'true', { path: '/' });
+            cookies.set('username', response.username, { path: '/' });
+            cookies.set('profile_picture', response.profile_picture, { path: '/' });
 
         } catch (error: any) {
 
