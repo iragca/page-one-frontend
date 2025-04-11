@@ -1,6 +1,7 @@
 <script>
     import SimpleInputWithIcon from "./SimpleInputWithIcon.svelte";
     import SimpleButtonWithText from "$lib/components/buttons/SimpleButtonWithText.svelte";
+    import SimpleLinkButton from "$lib/components/buttons/SimpleLinkButton.svelte";
 </script>
 
 <div class="background">
@@ -9,7 +10,7 @@
         <SimpleInputWithIcon icon="key" placeholder="Password" type="password"/>
     </div>
     <div class="bottom">
-        <SimpleButtonWithText icon="person_add" text="Sign Up" />
+        <SimpleLinkButton icon="person_add" text="Signup" href="/signup" />
         <SimpleButtonWithText icon="login" text="Login" />
     </div>
 </div>
@@ -36,4 +37,5 @@
         gap: 8px;
         width: 100%;
     }
+
 </style>
