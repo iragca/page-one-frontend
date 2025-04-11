@@ -87,7 +87,7 @@
 		minlength="8"
 		bind:value={passwordInput}
 	/>
-	<button type="button" class="visibility two" onclick={toggle}>
+	<button type="button" class="visibility two" onclick={toggle} tabindex="-1">
 		<span class="material-symbols-outlined"> {iconPass} </span>
 	</button>
 {/snippet}
