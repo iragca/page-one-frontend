@@ -38,6 +38,11 @@ body {
     --light-gray: rgb(160, 160, 160);
     --background-color-2: #474747;
     --background-color-3: #4c4748;
+
+    background:
+			radial-gradient(circle at 30% 30%, var(--background-color-2), transparent 70%),
+			radial-gradient(circle at 70% 70%, var(--background-color-3), transparent 70%);
+    background-color: var(--background-color);
 }
 
 .material-symbols-outlined, .material-icons {
