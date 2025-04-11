@@ -9,17 +9,18 @@
 
 </script>
 
-<div class="background">
+<form class="background" method="POST">
 	<div class="top">
-		<SimpleInputWithIcon icon="" placeholder="Username" />
-		<PasswordInputWithIcon icon="" placeholder="Password" visOff={hidePassword} />
-		<PasswordInputWithIcon icon="" placeholder="Confirm Password" visOff={hidePassword} />
+		<SimpleInputWithIcon icon="" placeholder="Username" name="username"/>
+		<SimpleInputWithIcon icon="" placeholder="Email" name="email"/>
+		<PasswordInputWithIcon icon="" placeholder="Password" visOff={hidePassword} name="password"/>
+		<PasswordInputWithIcon icon="" placeholder="Confirm Password" visOff={hidePassword} name="confirm_password"/>
 	</div>
 	<div class="bottom">
 		<SimpleLinkButton icon="arrow_back" text="" href="/login" />
-		<SimpleButtonWithText icon="person_add" text="Create Account" />
+		<SimpleButtonWithText type="submit" icon="person_add" text="Create Account" />
 	</div>
-</div>
+</form>
 
 <style>
 	.background {

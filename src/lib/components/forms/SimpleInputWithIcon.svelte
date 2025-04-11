@@ -1,10 +1,10 @@
 <script lang="ts">
-	let { icon, placeholder, type = "text" } = $props();
+	let { icon, placeholder, type = "text", name} = $props();
 </script>
 
 <div class="background">
 	<span class="material-symbols-outlined"> {icon} </span>
-	<input class="text-box" {type} {placeholder} />
+	<input class="text-box" {type} {placeholder} {name} />
 </div>
 
 <style>

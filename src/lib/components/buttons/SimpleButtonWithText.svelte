@@ -1,8 +1,8 @@
 <script lang="ts">
-	let { icon, text } = $props();
+	let { icon, text, type = 'button' } = $props();
 </script>
 
-<button class="background">
+<button class="background" {type}>
 	<span class="material-symbols-outlined"> {icon} </span>
 	<div class="text-box">{text}</div>
 </button>

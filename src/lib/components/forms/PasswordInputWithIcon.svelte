@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { icon, placeholder, visOff } = $props();
+	let { icon, placeholder, visOff, name } = $props();
 
 	let toggle = () => {
 		visOff = !visOff;
@@ -13,12 +13,12 @@
 	<span class="material-symbols-outlined"> {icon} </span>
 
 	{#if visOff}
-		<input class="text-box" type="password" placeholder={placeholder} bind:value={input} />
+		<input class="text-box" type="password" placeholder={placeholder} bind:value={input} {name} />
 		<button class="visibility one" onclick={toggle}>
 			<span class="material-symbols-outlined"> visibility_off </span>
 		</button>
 	{:else}
-		<input class="text-box" type="text" placeholder={placeholder}  bind:value={input} />
+		<input class="text-box" type="text" placeholder={placeholder}  bind:value={input} {name}/>
 		<button class="visibility two" onclick={toggle}>
 			<span class="material-symbols-outlined"> visibility </span>
 		</button>
