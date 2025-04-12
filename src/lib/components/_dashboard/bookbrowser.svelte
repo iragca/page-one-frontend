@@ -1,16 +1,12 @@
 <script lang="ts">
-	import NavBar from '$lib/components/navbar.svelte';
 	import Gridview from './_bookbrowser/gridview.svelte';
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
 	import SimpleSearchBar from '../bars/SimpleSearchBar.svelte';
-	import { viewMode } from '$lib/stores/viewmode';
+	import { showBookDetails, viewMode } from '$lib/stores/dashboard';
+	import PopupBookDetails from '../popups/PopupBookDetails.svelte';
 
 	let { response } = $props();
-
-	let toggleView = () => {
-		$viewMode = $viewMode === 'grid' ? 'list' : 'grid';
-	};
 
 	let books = $state(response.data.books);
 	let fetchFailed = $state(false);
@@ -27,7 +23,7 @@
 		<div class="navbar-container">
 			<div class="container left"><slot /></div>
 			<div class="container middle"><SimpleSearchBar /></div>
-			<div class="container right"><Options {toggleView} {viewMode} /></div>
+			<div class="container right"><Options /></div>
 		</div>
 		{#if fetchFailed}
 			<div class="error-message">{errorMessage}</div>
@@ -37,6 +33,9 @@
 			<Listview {books} />
 		{:else}
 			<Gridview {books} />
+		{/if}
+		{#if $showBookDetails}
+			<PopupBookDetails {books} />
 		{/if}
 	</div>
 </div>
@@ -81,6 +80,44 @@
 		position: absolute;
 		right: 8%;
 		flex: 1;
+	}
+
+	.book-info-card-bg {
+		position: absolute;
+		z-index: 1;
+
+		width: 100%;
+		height: 100%;
+		background-color: rgba(31, 31, 31, 0.8);
+		backdrop-filter: blur(4px);
+	}
+
+	.book-info-card-location {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		height: 100vh;
+	}
+
+	.book-info-card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 16px;
+
+		min-width: 600px;
+		max-width: 80%;
+		padding: 40px;
+
+		border: 2px solid var(--dark-gray);
+		border-radius: 12px;
+
+		background-color: rgba(31, 31, 31, 0.75);
+		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
+		-webkit-backdrop-filter: blur(12px); /* for Safari */
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	}
 
 	@media (max-width: 768px) {

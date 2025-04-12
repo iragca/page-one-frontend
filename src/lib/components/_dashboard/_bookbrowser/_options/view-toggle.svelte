@@ -1,6 +1,10 @@
 <script lang="ts">
 	import ButtonWithIcon from '$lib/components/buttons/ButtonWithIcon.svelte';
-	let { toggleView, viewMode } = $props();
+	import { viewMode } from '$lib/stores/dashboard';
+
+	let toggleView = () => {
+		$viewMode = $viewMode === 'grid' ? 'list' : 'grid';
+	};
 </script>
 
 <div class="view-toggle">
