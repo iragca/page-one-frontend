@@ -5,10 +5,14 @@
 	import SimpleSearchBar from '../bars/SimpleSearchBar.svelte';
 	import { showBookDetails, viewMode } from '$lib/stores/dashboard';
 	import PopupBookDetails from '../popups/PopupBookDetails.svelte';
+	import { sortBy } from '$lib/stores/dashboard';
+	import { sortOrder } from '$lib/stores/dashboard';
+	import { sortByKey } from '$lib/client/sort';
 
 	let { response } = $props();
+	let sortedBooks = sortByKey(response.data.books, $sortBy, $sortOrder === 'asc');
+	let books = $state(sortedBooks);
 
-	let books = $state(response.data.books);
 	let fetchFailed = $state(false);
 	let errorMessage = $state('');
 
@@ -77,8 +81,6 @@
 			rgba(31, 31, 31, 0.1),
 			rgba(31, 31, 31, 0)
 		);
-
-
 	}
 	.gradient {
 		overflow: visible;
@@ -88,7 +90,6 @@
 		z-index: 5;
 		max-height: 100px;
 		pointer-events: none;
-
 	}
 
 	.container {
