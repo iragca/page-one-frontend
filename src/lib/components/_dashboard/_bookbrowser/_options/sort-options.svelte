@@ -28,5 +28,6 @@
 <style>
 	.button-container {
 		all: unset;
+		pointer-events: visibleFill;
 	}
 </style>

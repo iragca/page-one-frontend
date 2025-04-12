@@ -14,6 +14,7 @@
 > Required stuff
 > - Docker
 > - .env file with the BACKEND_API_URL 
+> - npm and Node.js
 
 
 Start the [backend](https://github.com/iragca/page-one) using Docker. 

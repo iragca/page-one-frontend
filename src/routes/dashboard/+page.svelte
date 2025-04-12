@@ -19,5 +19,6 @@
 <style>
 	.close-sidebar {
 		all: unset;
+		pointer-events: visibleFill;
 	}
 </style>

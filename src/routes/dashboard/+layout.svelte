@@ -28,6 +28,7 @@
 <style>
 	.background {
 		height: 100%;
+		width: 100%;
 		min-height: 100vh;
 	}
 
@@ -35,14 +36,12 @@
 		display: flex;
 		height: 100%;
 		min-height: 100vh;
-		width: 100vw;
+
 	}
 
 	.grid-item {
 		position: relative;
 		text-align: center;
-		max-width: 100%; /* Ensures items do not exceed their fraction size */
-		box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 	}
 
 	.grid-item.sidebar {

@@ -19,12 +19,14 @@
 </script>
 
 <div class="background">
-	<div class="grid">
+	<div class="gradient">
 		<div class="navbar-container">
 			<div class="container left"><slot /></div>
 			<div class="container middle"><SimpleSearchBar /></div>
 			<div class="container right"><Options /></div>
 		</div>
+	</div>
+	<div class="grid">
 		{#if fetchFailed}
 			<div class="error-message">{errorMessage}</div>
 		{:else if books.length === 0}
@@ -43,22 +45,50 @@
 <style>
 	.background {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: center;
 		height: 100%;
+		width: 100%;
 		margin: 0px;
 	}
 	.grid {
-		display: grid;
 		grid-template-rows: minmax(0, 100px) 1fr;
 		gap: 18px;
 		height: 100%;
 	}
 
 	.navbar-container {
+		position: sticky;
+		top: 0;
 		display: flex;
 		justify-content: space-evenly;
-		align-items: center;
+		align-items: flex-start;
+
+		width: 100%;
+		height: 150px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background: linear-gradient(
+			to bottom,
+			rgba(31, 31, 31, 1),
+			rgba(31, 31, 31, 0.8),
+			rgba(31, 31, 31, 0.4),
+			rgba(31, 31, 31, 0.1),
+			rgba(31, 31, 31, 0)
+		);
+
+
+	}
+	.gradient {
+		overflow: visible;
+		width: 100%;
+		position: sticky;
+		top: 0;
+		z-index: 5;
+		max-height: 100px;
+		pointer-events: none;
+
 	}
 
 	.container {
@@ -70,7 +100,7 @@
 
 	.left {
 		position: absolute;
-		left: 8%;
+		left: 4%;
 		flex: 1;
 	}
 	.middle {

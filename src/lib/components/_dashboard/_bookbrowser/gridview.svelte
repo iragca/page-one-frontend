@@ -18,6 +18,7 @@
 		align-items: flex-start;
 		align-content: flex-start;
 		flex-wrap: wrap;
+		width: 100%;
 		gap: 12px;
 	}
 </style>

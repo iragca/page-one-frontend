@@ -20,5 +20,6 @@
 <style>
 	.toggle-button {
 		all: unset;
+		pointer-events: visibleFill;
 	}
 </style>
