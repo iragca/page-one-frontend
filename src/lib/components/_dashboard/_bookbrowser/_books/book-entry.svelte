@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { title, author } = $props();
+	let { book } = $props();
 	import Book from './book.svelte';
 </script>
 
@@ -7,8 +7,8 @@
 	<div class="book-image">
 		<slot {Book} />
 	</div>
-	<div class="book-title">{title}</div>
-	<div class="book-author">{author}</div>
+	<div class="book-title">{book.title}</div>
+	<div class="book-author">{book.author}</div>
 </div>
 
 <style>

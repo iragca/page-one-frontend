@@ -1,3 +1,6 @@
+// This ROUTE is now deprecated.
+// Replaced by a popup component in the dashboard. 
+
 import { BACKEND_API_URL } from '$env/static/private';
 import type { PageServerLoad } from './$types';
 

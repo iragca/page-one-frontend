@@ -1,12 +1,10 @@
 <script lang="ts">
 	import ViewToggle from './view-toggle.svelte';
 	import SortOptions from './sort-options.svelte';
-
-    let { toggleView, viewMode } = $props();
 </script>
 
 <div class="background">
-    <ViewToggle {toggleView} {viewMode} />
+    <ViewToggle />
     <SortOptions />
 </div>
 

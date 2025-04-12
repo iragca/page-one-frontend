@@ -15,13 +15,23 @@
 <style>
 	.icon-link {
 		all: unset;
-        cursor: pointer;
-        height: 40px;
-        width: 40px;
-        color: var(--light-gray);
+		cursor: pointer;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 40px;
+		width: 40px;
+		color: var(--light-gray);
 	}
 
-    .icon-link:hover  {
-        color: white;
-    }
+	.icon-link:hover {
+		color: white;
+	}
+
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 </style>
