@@ -1,3 +1,8 @@
+<!-- 
+This ROUTE is now deprecated.
+Replaced by a popup component in the dashboard. 
+-->
+
 <script lang="ts">
 	import type { PageData } from './$types';
 
