@@ -18,17 +18,19 @@
 		max-width: 400px;
 		height: 42px;
 		gap: 8px;
-		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
-		-webkit-backdrop-filter: blur(12px); /* for Safari */
+		backdrop-filter: blur(4px); 
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 	}
 
 	.search-bar:hover {
 		background-color: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(12px);
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	}
 
 	.search-bar:focus-within {
 		background-color: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(12px);
 		box-shadow: 0px 0px 8px var(--dark-black);
 	}
 

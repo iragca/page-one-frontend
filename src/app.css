@@ -48,3 +48,7 @@ body {
 .material-symbols-outlined, .material-icons {
     user-select: none;
 }
+
+html {
+    scrollbar-gutter: stable;
+  }
