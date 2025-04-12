@@ -22,7 +22,7 @@
 
 		width: 100%;
 		height: 100%;
-		background-color: rgba(31, 31, 31, 0.8);
+		background-color: rgba(31, 31, 31, 0.4);
 		backdrop-filter: blur(4px);
 	}
 
