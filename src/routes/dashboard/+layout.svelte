@@ -1,13 +1,14 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from '../$types';
-
-	import OpenSidebarButton from '$lib/components/buttons/OpenSidebarButton.svelte';
-	import CloseSidebarButton from '$lib/components/buttons/CloseSidebarButton.svelte';
-
+	import { onMount } from 'svelte';
 	import SideBar from '$lib/components/_dashboard/sidebar.svelte';
 	import { closeSidebar } from '$lib/stores/sidebar';
 	import { user } from '$lib/stores/user';
+
+	onMount(() => {
+		document.title = 'Dashboard | Page One';
+	});
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
@@ -36,7 +37,6 @@
 		display: flex;
 		height: 100%;
 		min-height: 100vh;
-
 	}
 
 	.grid-item {

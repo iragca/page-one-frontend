@@ -1,8 +1,13 @@
 <script lang="ts">
 	import SimpleSignUpForm from '$lib/components/forms/SimpleSignUpForm.svelte';
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
 
-	let { data, form }: { data: PageData, form: any } = $props();
+	onMount(() => {
+		document.title = 'Signup | Page One';
+	});
+
+	let { data, form }: { data: PageData; form: any } = $props();
 </script>
 
 <div class="background">
