@@ -20,6 +20,8 @@
 		-webkit-backdrop-filter: blur(12px); /* for Safari */
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         padding-left: 8px;
+        border-radius: 4px;
+
 	}
 
     .background:focus-within {

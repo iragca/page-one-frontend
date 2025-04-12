@@ -24,6 +24,8 @@
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		padding: 8px;
 
+		border-radius: 4px;
+		
 		width: 100%;
 	}
 

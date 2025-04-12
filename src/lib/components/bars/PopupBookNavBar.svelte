@@ -12,7 +12,7 @@
 <nav class="navbar">
 	<SimpleButton iconName="close" onclick={closeBookDetails} />
 	<div class="bookTitle">
-		{bookTitle}
+	
 	</div>
 	<SimpleButton iconName="edit" onclick={() => {}} />
 	<SimpleButton iconName="download" onclick={() => {}} />

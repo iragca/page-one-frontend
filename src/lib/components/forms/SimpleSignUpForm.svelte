@@ -109,6 +109,7 @@
 		flex-direction: column;
 		gap: 8px;
 		height: 100%;
+		border-radius: 4px;
 	}
 
 	.top {
@@ -129,6 +130,8 @@
 		all: unset;
 		height: 36px;
 		width: 100%;
+		border-radius: 4px;
+
 	}
 
 	.text-box:user-invalid {

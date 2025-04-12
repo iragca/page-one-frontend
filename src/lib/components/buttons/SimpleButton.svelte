@@ -23,6 +23,7 @@
 		height: 40px;
 		width: 40px;
 		color: var(--light-gray);
+		border-radius: 4px;
 	}
 
 	.icon-link:hover {

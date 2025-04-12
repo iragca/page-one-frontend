@@ -27,7 +27,7 @@
 	}
 
 	.book-info-card-location {
-		position: fixed;
+		position: absolute;
 		display: flex;
 		justify-content: center;
 		align-items: center;
