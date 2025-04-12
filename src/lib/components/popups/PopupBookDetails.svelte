@@ -50,8 +50,8 @@
 		border-radius: 12px;
 
 		background-color: rgba(31, 31, 31, 0.75);
-		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
-		-webkit-backdrop-filter: blur(12px); /* for Safari */
+		backdrop-filter: blur(20px); /* the blur gives the frosted effect */
+		-webkit-backdrop-filter: blur(20px); /* for Safari */
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	}
 </style>
