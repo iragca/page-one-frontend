@@ -5,17 +5,19 @@
 </script>
 
 <div class="book-info-card-bg">
-	<div class="book-info-card-location">
-		<div class="book-info-card">
-			<PopupBookNavBar bookTitle={$chosenBook.title} />
-			<BookInfoCard book={$chosenBook} />
-		</div>
-	</div>
 </div>
 
+<div class="book-info-card-location">
+	<div class="book-info-card">
+		<PopupBookNavBar bookTitle={$chosenBook.title} />
+		<BookInfoCard book={$chosenBook} />
+	</div>
+</div>
 <style>
 	.book-info-card-bg {
 		position: absolute;
+		top: 0px;
+		left: 0px;
 		z-index: 4;
 
 		width: 100%;
@@ -25,10 +27,11 @@
 	}
 
 	.book-info-card-location {
+		position: fixed;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		z-index: 5;
 		height: 100vh;
 	}
 
