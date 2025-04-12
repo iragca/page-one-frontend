@@ -77,14 +77,18 @@
 			rgba(31, 31, 31, 0.1),
 			rgba(31, 31, 31, 0)
 		);
+
+
 	}
 	.gradient {
 		overflow: visible;
 		width: 100%;
 		position: sticky;
 		top: 0;
-		z-index: 3;
+		z-index: 5;
 		max-height: 100px;
+		pointer-events: none;
+
 	}
 
 	.container {
