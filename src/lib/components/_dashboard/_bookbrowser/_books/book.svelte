@@ -1,39 +1,33 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	let { title, cover_photo, _id } = $props();
+	import { showBookDetails } from '$lib/stores/dashboard';
+	import { chosenBook } from '$lib/stores/dashboard';
+
+	let { book } = $props();
 
 	let hovering = $state(false);
 
 	let transitionOptions = {
 		duration: 80
 	};
+
+	function openBookDetails() {
+		$chosenBook = book;
+		$showBookDetails = true;
+	}
 </script>
 
-<a href={`dashboard/book/${_id}`} class="book-link">
-	<button
-		class="book"
-		onmouseenter={() => (hovering = true)}
-		onmouseleave={() => (hovering = false)}
-	>
-		{#if hovering}
-			<div class="layer book-icon" transition:fade={transitionOptions}>
-				<span class="material-symbols-outlined"> menu_book </span>
-			</div>
-			<div class="layer vignette" transition:fade={transitionOptions}></div>
-		{/if}
-		<img
-			class="layer book-image"
-			src={cover_photo || '/images/no-cover-retrieved.png'}
-			alt={title}
-		/>
+<button class="book" onmouseenter={() => (hovering = true)} onmouseleave={() => (hovering = false) } onclick={openBookDetails}>
+	{#if hovering}
+		<div class="layer book-icon" transition:fade={transitionOptions}>
+			<span class="material-symbols-outlined"> menu_book </span>
+		</div>
+		<div class="layer vignette" transition:fade={transitionOptions}></div>
+	{/if}
+	<img class="layer book-image" src={book.cover_photo || '/images/no-cover-retrieved.png'} alt={book.title} />
 	</button>
-</a>
 
 <style>
-
-	.book-link {
-		all: unset;
-	}
 	.book {
 		all: unset;
 		display: grid;
@@ -43,7 +37,7 @@
 		width: 100%;
 		object-fit: fill;
 		border-radius: 4px;
-		box-shadow: 0px 0px 4px rgba(0, 0, 0, .64);
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.64);
 	}
 
 	.layer {
@@ -58,7 +52,7 @@
 		height: 40px;
 		width: 40px;
 		border-radius: 50%;
-		z-index: 99;
+		z-index: 3;
 	}
 
 	.material-symbols-outlined {
@@ -72,7 +66,6 @@
 		z-index: 2;
 		border-radius: 4px;
 	}
-
 
 	.book-image {
 		height: 100%;

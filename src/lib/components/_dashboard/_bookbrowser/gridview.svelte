@@ -5,8 +5,8 @@
 
 <div class="book-grid">
 	{#each books as book}
-		<BookEntry let:Book {...book}>
-			<Book {...book}></Book>
+		<BookEntry let:Book {book}>
+			<Book {book}></Book>
 		</BookEntry>
 	{/each}
 </div>

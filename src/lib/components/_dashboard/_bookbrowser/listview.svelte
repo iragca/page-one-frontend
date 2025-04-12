@@ -10,7 +10,7 @@
 		{#each books as book}
 			<div class="book-container">
 				<div class="book">
-                    <Book {...book} />
+                    <Book {book} />
 				</div>
 				<div class="book-details">
 					<div class="book-title">
