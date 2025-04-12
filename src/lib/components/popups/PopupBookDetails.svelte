@@ -18,7 +18,7 @@
 		position: absolute;
 		top: 0px;
 		left: 0px;
-		z-index: 4;
+		z-index: 10;
 
 		width: 100%;
 		height: 100%;
@@ -31,7 +31,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 5;
+		z-index: 11;
 		height: 100vh;
 	}
 
