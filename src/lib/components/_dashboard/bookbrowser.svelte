@@ -82,44 +82,6 @@
 		flex: 1;
 	}
 
-	.book-info-card-bg {
-		position: absolute;
-		z-index: 1;
-
-		width: 100%;
-		height: 100%;
-		background-color: rgba(31, 31, 31, 0.8);
-		backdrop-filter: blur(4px);
-	}
-
-	.book-info-card-location {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		height: 100vh;
-	}
-
-	.book-info-card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		gap: 16px;
-
-		min-width: 600px;
-		max-width: 80%;
-		padding: 40px;
-
-		border: 2px solid var(--dark-gray);
-		border-radius: 12px;
-
-		background-color: rgba(31, 31, 31, 0.75);
-		backdrop-filter: blur(12px); /* the blur gives the frosted effect */
-		-webkit-backdrop-filter: blur(12px); /* for Safari */
-		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	}
-
 	@media (max-width: 768px) {
 		.left,
 		.right {
