@@ -4,7 +4,7 @@
 	import ButtonWithIcon from '$lib/components/buttons/ButtonWithIcon.svelte';
 	import ModalDivider from '../../_sidebar/_profilecard/modal-divider.svelte';
 	import { sortBy, books, sortOrder } from '$lib/stores/dashboard';
-	import { sortByKey, sortByIntegerKey } from '$lib/client/sort';
+	import { sortByKey } from '$lib/client/sort';
 
 	let showDropdown = $state(false);
 	const toggleDropdown = () => {
@@ -18,18 +18,15 @@
 		author: 'Author',
 		year_published: 'Date'
 	};
+	let integerKeys = ['year_published'];
 
 	const changeOption = (option: string) => {
-		console.log(option);
-		let integerKeys = ['year_published'];
 		$sortBy = option;
 
 		if (integerKeys.includes(option)) {
-			console.log('integer key');
-			$books = sortByIntegerKey($books, $sortBy, $sortOrder === 'asc');
+			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'number');
 		} else {
-			console.log('string key');
-			$books = sortByKey($books, $sortBy, $sortOrder === 'asc');
+			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'string');
 		}
 	};
 
@@ -40,11 +37,11 @@
 	};
 
 	const changeOrder = (order: string) => {
-		$sortOrder = order;
-		if (order === 'asc') {
-			$books = sortByKey($books, $sortBy, true);
+		$sortOrder = order === 'asc' ? 'desc' : 'asc';
+		if (integerKeys.includes($sortBy)) {
+			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'number');
 		} else {
-			$books = sortByKey($books, $sortBy, false);
+			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'string');
 		}
 	};
 </script>
