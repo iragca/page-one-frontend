@@ -12,7 +12,7 @@
 	$books = response.data.books;
 
 	onMount(() => {
-		$books = sortByKey($books, $sortBy, $sortOrder === 'asc');
+		$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'string');
 	});
 
 	let fetchFailed = $state(false);

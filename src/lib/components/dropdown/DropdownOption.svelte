@@ -4,7 +4,7 @@
 
 <button
 	class="option"
-	style={currentOption ? 'color: white; background-color: var(--dark-black)' : ''}
+	style={currentOption ? 'color: white' : ''}
 	onclick={onclickFn}
 >
 	{#if icon}

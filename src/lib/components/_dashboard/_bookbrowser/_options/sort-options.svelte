@@ -30,19 +30,13 @@
 		}
 	};
 
-	let orders = ['asc', 'desc'];
-	let orderNames = {
-		asc: 'Ascending',
-		desc: 'Descending'
+	const changeToAscending = () => {
+		$sortOrder = 'asc';
+		$books = sortByKey($books, $sortBy, true, integerKeys.includes($sortBy) ? 'number' : 'string');
 	};
-
-	const changeOrder = (order: string) => {
-		$sortOrder = order === 'asc' ? 'desc' : 'asc';
-		if (integerKeys.includes($sortBy)) {
-			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'number');
-		} else {
-			$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'string');
-		}
+	const changeToDescending = () => {
+		$sortOrder = 'desc';
+		$books = sortByKey($books, $sortBy, false, integerKeys.includes($sortBy) ? 'number' : 'string');
 	};
 </script>
 
@@ -69,22 +63,12 @@
 				{/if}
 			{/each}
 			<ModalDivider />
-			{#each orders as order}
-				{#if order === $sortOrder}
-					<DropdownOption
-						onclickFn={() => {
-							changeOrder(order);
-						}}
-						currentOption={true}>{orderNames[order]}</DropdownOption
-					>
-				{:else}
-					<DropdownOption
-						onclickFn={() => {
-							changeOrder(order);
-						}}>{orderNames[order]}</DropdownOption
-					>
-				{/if}
-			{/each}
+			<DropdownOption onclickFn={changeToAscending} currentOption={$sortOrder === 'asc'}
+				>Ascending</DropdownOption
+			>
+			<DropdownOption onclickFn={changeToDescending} currentOption={$sortOrder === 'desc'}
+				>Descending</DropdownOption
+			>
 		</Dropdown>
 	{/if}
 </div>
