@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { icon = null, currentOption = false, onclickFn = () => {} } = $props();
+	let { icon = null, currentOption = false, onclickFn } = $props();
 </script>
 
 <button

@@ -3,15 +3,17 @@
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
 	import SimpleSearchBar from '../bars/SimpleSearchBar.svelte';
-	import { showBookDetails, viewMode } from '$lib/stores/dashboard';
-	import PopupBookDetails from '../popups/PopupBookDetails.svelte';
-	import { sortBy } from '$lib/stores/dashboard';
-	import { sortOrder } from '$lib/stores/dashboard';
+	import { showBookDetails, viewMode, sortBy, sortOrder, books } from '$lib/stores/dashboard';
+	import { onMount } from 'svelte';
 	import { sortByKey } from '$lib/client/sort';
+	import PopupBookDetails from '../popups/PopupBookDetails.svelte';
 
 	let { response } = $props();
-	let sortedBooks = sortByKey(response.data.books, $sortBy, $sortOrder === 'asc');
-	let books = $state(sortedBooks);
+	$books = response.data.books;
+
+	onMount(() => {
+		$books = sortByKey($books, $sortBy, $sortOrder === 'asc');
+	});
 
 	let fetchFailed = $state(false);
 	let errorMessage = $state('');

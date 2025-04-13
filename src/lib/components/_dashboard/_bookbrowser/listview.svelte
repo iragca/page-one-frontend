@@ -2,12 +2,12 @@
 	import Book from './_books/book.svelte';
 
 	import { faker } from '@faker-js/faker';
-	let { books } = $props();
+	import { books } from '$lib/stores/dashboard';
 </script>
 
 <div class="list-container">
 	<div class="book-list">
-		{#each books as book}
+		{#each $books as book}
 			<div class="book-container">
 				<div class="book">
                     <Book {book} />
