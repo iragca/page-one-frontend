@@ -1,10 +1,10 @@
 <script lang="ts">
-	let { icon = null, currentOption = false, onclickFn = () => {} } = $props();
+	let { icon = null, currentOption = false, onclickFn } = $props();
 </script>
 
 <button
 	class="option"
-	style={currentOption ? 'color: white; background-color: var(--dark-black)' : ''}
+	style={currentOption ? 'color: white' : ''}
 	onclick={onclickFn}
 >
 	{#if icon}

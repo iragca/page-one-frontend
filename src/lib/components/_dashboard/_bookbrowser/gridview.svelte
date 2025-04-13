@@ -1,10 +1,10 @@
 <script lang="ts">
 	import BookEntry from './_books/book-entry.svelte';
-	let { books } = $props();
+	import { books } from '$lib/stores/dashboard';
 </script>
 
 <div class="book-grid">
-	{#each books as book}
+	{#each $books as book}
 		<BookEntry let:Book {book}>
 			<Book {book}></Book>
 		</BookEntry>

@@ -3,12 +3,18 @@
 	import Listview from './_bookbrowser/listview.svelte';
 	import Options from './_bookbrowser/_options/options.svelte';
 	import SimpleSearchBar from '../bars/SimpleSearchBar.svelte';
-	import { showBookDetails, viewMode } from '$lib/stores/dashboard';
+	import { showBookDetails, viewMode, sortBy, sortOrder, books } from '$lib/stores/dashboard';
+	import { onMount } from 'svelte';
+	import { sortByKey } from '$lib/client/sort';
 	import PopupBookDetails from '../popups/PopupBookDetails.svelte';
 
 	let { response } = $props();
+	$books = response.data.books;
 
-	let books = $state(response.data.books);
+	onMount(() => {
+		$books = sortByKey($books, $sortBy, $sortOrder === 'asc', 'string');
+	});
+
 	let fetchFailed = $state(false);
 	let errorMessage = $state('');
 
@@ -77,8 +83,6 @@
 			rgba(31, 31, 31, 0.1),
 			rgba(31, 31, 31, 0)
 		);
-
-
 	}
 	.gradient {
 		overflow: visible;
@@ -88,7 +92,6 @@
 		z-index: 5;
 		max-height: 100px;
 		pointer-events: none;
-
 	}
 
 	.container {
