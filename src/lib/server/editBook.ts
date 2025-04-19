@@ -4,9 +4,6 @@ export const editBook = async (book: any) => {
 
     const { _id, ...details } = book
 
-    console.log('bookId', _id)
-    console.log('details', details)
-
     const response = await fetch(`${BACKEND_API_URL}/books/${_id}`, {
         method: 'PATCH',
         headers: {
