@@ -1,11 +1,17 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/buttons/SimpleButton.svelte';
 	import { showBookDetails } from '$lib/stores/dashboard';
+	import { editMode } from '$lib/stores/dashboard';
 
 	let { bookTitle } = $props();
 
 	function closeBookDetails() {
 		$showBookDetails = false;
+	}
+
+	function toggleEditMode() {
+		$editMode = !$editMode;
+		console.log('Edit mode:', $editMode);
 	}
 </script>
 
@@ -14,7 +20,7 @@
 	<div class="bookTitle">
 		{bookTitle}
 	</div>
-	<SimpleButton iconName="edit" onclick={() => {}} />
+	<SimpleButton iconName="edit" onclick={toggleEditMode} />
 	<SimpleButton iconName="download" onclick={() => {}} />
 </nav>
 

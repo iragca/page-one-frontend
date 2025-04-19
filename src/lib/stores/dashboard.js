@@ -6,3 +6,4 @@ export let books = writable([]);
 export let chosenBook = writable(null);
 export let sortBy = writable('title');
 export let sortOrder = writable('asc');
+export let editMode = writable(false);

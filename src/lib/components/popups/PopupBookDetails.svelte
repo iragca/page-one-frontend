@@ -1,18 +1,26 @@
 <script lang="ts">
 	import BookInfoCard from '../books/BookInfoCard.svelte';
+	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
 	import { chosenBook } from '$lib/stores/dashboard';
+	import { editMode } from '$lib/stores/dashboard';
 </script>
 
-<div class="book-info-card-bg">
-</div>
+<div class="book-info-card-bg"></div>
 
 <div class="book-info-card-location">
 	<div class="book-info-card">
 		<PopupBookNavBar bookTitle={$chosenBook.title} />
-		<BookInfoCard book={$chosenBook} />
+		{#if $editMode}
+			<form action="POST">
+				<BookInfoCardEditMode book={$chosenBook} />
+			</form>
+		{:else}
+			<BookInfoCard book={$chosenBook} />
+		{/if}
 	</div>
 </div>
+
 <style>
 	.book-info-card-bg {
 		position: absolute;
