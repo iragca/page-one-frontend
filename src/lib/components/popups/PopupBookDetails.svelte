@@ -10,7 +10,6 @@
 
 	function toggleEditMode() {
 		$editMode = !$editMode;
-		console.log('Edit mode:', $editMode);
 	}
 </script>
 
