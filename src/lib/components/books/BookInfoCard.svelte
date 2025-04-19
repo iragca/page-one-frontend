@@ -115,6 +115,7 @@
 	}
 
 	.description {
+		white-space: pre-wrap;
 		max-height: fit-content;
 	}
 
