@@ -4,29 +4,31 @@
 
 {#snippet metadataPair(key: string, value: string)}
 	<div class="pair">
-		<input type="text" class="key" placeholder={key} value={key} />
-		<input type="text" class="value" placeholder={value} {value} />
+		<div class="key">{key}</div>
+		<input type="text" class="value" name={key} placeholder={value} {value} />
 	</div>
 {/snippet}
 
 <div class="background">
-	<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
+	<div>
+		<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
+		<input type="text" class="cover" name="cover_photo" value={book.cover_photo} />
+	</div>
+
 	<div class="details">
 		<div class="header">
 			<div class="left">
 				<input
 					type="text"
 					class="title"
-					name="tt"
-					id="tt"
+					name="title"
 					placeholder={book.title}
 					value={book.title}
 				/>
 				<input
 					type="text"
 					class="author"
-					name="dd"
-					id="dd"
+					name="author"
 					placeholder={book.author}
 					value={book.author}
 				/>
@@ -44,8 +46,7 @@
 			<!-- TODO: FIX THE OVERFLOW ISSUE of the textarea -->
 			<textarea
 				class="description"
-				name=""
-				id=""
+				name="description"
 				value={book.description}
 				placeholder={book.description}
 			></textarea>

@@ -1,5 +1,7 @@
 import { BACKEND_API_URL } from '$env/static/private';
-import type { PageServerLoad } from './$types';
+import { fail, redirect } from '@sveltejs/kit';
+import { editBook } from '$lib/server/editBook';
+import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async (event) => {
 
@@ -23,3 +25,38 @@ export const load = (async (event) => {
         }
     }
 }) satisfies PageServerLoad;
+
+export const actions = {
+    editBook: async ({ request }) => {
+        const data = await request.formData();
+
+        try {
+            const response = await editBook(
+                {
+                    _id: data.get('bookId') as string,
+                    title: data.get('title') as string,
+                    author: data.get('author') as string,
+                    description: data.get('description') as string,
+                    genre: data.get('GENRE') as string,
+                    year_published: data.get('PUBLISHED') as string,
+                    publisher: data.get('PUBLISHER') as string,
+                    isbn_issn: data.get('ISBN') as string,
+                    cover_photo: data.get('cover_photo') as string,
+                }
+            );
+        } catch (error: any) {
+
+            // Handle specific error messages
+            if (error.message === 'User already exists') {
+                return fail(409, {
+                    error: error.message
+                });
+            }
+            // Handle other errors
+            return fail(422, {
+                error: error.message
+            });
+        }
+
+    }
+} satisfies Actions;
