@@ -151,16 +151,8 @@
 
 	textarea {
 		all: unset;
-		display: block;
-		resize: both;
-
-		min-height: 100px;
-		min-width: 300px;
-
-		max-width: 1200px;
-
-		max-height: fit-content;
-		padding-right: 12px;
+		resize: none;
+		field-sizing: content;
 	}
 
 	.pair {
