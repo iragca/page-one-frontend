@@ -62,6 +62,7 @@
 		grid-template-rows: minmax(0, 100px) 1fr;
 		gap: 18px;
 		height: 100%;
+		width: 100%;
 	}
 
 	.navbar-container {
