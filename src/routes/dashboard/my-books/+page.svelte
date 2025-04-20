@@ -5,12 +5,8 @@
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 
-	let { data }: { data: PageData } = $props();
-	let response = { data };
+	let response: { data: PageData } = $props();
 
-	onMount(() => {
-		console.log(data.books);
-	});
 
 	let toggleSidebar = () => {
 		$closeSidebar = !$closeSidebar;
