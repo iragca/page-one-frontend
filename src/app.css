@@ -47,6 +47,10 @@ body {
     user-select: none;
 }
 
+button {
+    all: unset;
+}
+
 /* html {
     scrollbar-gutter: stable;
 } */

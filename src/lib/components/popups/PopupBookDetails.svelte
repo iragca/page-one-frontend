@@ -18,16 +18,25 @@
 <div class="book-info-card-location">
 	<div class="book-info-card">
 		<PopupBookNavBar let:SimpleButton>
-			<SimpleButton iconName="close" onclick={closeBookDetails} type="button" form="" />
+			<button onclick={closeBookDetails} aria-label="Close">
+				<SimpleButton iconName="close" />
+			</button>
 			<div class="bookTitle">{$chosenBook.title || 'No title retrieved'}</div>
-			
-			{#if $editMode}
-				<SimpleButton iconName="save" onclick={() => {}} type="submit" form="editBookForm" />
-				<SimpleButton iconName="delete" onclick={() => {}} type="button" form="" />
-			{/if}
 
-			<SimpleButton iconName="edit" onclick={toggleEditMode} type="button" form="" />
-			<SimpleButton iconName="download" onclick={() => {}}  type="button" form=""/>
+			{#if $editMode}
+				<button type="submit" form="editBookForm">
+					<SimpleButton iconName="save" />
+				</button>
+				<button>
+					<SimpleButton iconName="delete" />
+				</button>
+			{/if}
+			<button onclick={toggleEditMode}>
+				<SimpleButton iconName="edit" />
+			</button>
+			<button>
+				<SimpleButton iconName="download" />
+			</button>
 		</PopupBookNavBar>
 		{#if $editMode}
 			<form id="editBookForm" method="POST" action="?/editBook">
