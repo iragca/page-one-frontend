@@ -24,7 +24,10 @@
 			<div class="bookTitle">{$chosenBook.title || 'No title retrieved'}</div>
 			{#if $editMode}
 				<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
-				<button><SimpleButton iconName="delete" /></button>
+				<form action="?/deleteBook" method="POST">
+					<input type="hidden" name="bookId" value={$chosenBook._id} />
+					<button type="submit"><SimpleButton iconName="delete" /></button>
+				</form>
 			{/if}
 			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			<button><SimpleButton iconName="download" /></button>

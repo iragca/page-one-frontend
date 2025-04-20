@@ -9,7 +9,7 @@
 
 <div class="view-toggle">
 	<button class="toggle-button" onclick={toggleView}>
-		{#if viewMode === 'grid'}
+		{#if $viewMode === 'grid'}
 			<ButtonWithIcon>view_list</ButtonWithIcon>
 		{:else}
 			<ButtonWithIcon>grid_view</ButtonWithIcon>

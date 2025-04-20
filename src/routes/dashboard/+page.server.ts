@@ -58,5 +58,32 @@ export const actions = {
             });
         }
 
+    },
+
+    deleteBook: async ({ request }) => {
+        const data = await request.formData();
+        const bookId = data.get('bookId') as string;
+
+        try {
+            const response = await fetch(`${BACKEND_API_URL}/books/${bookId}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else if (response.status === 400) {
+                throw new Error('Bad Request: Invalid book ID');
+            } else if (response.status === 404) {
+                throw new Error('Not Found: Book not found');
+            } else if (response.status === 500) {
+                throw new Error('Internal Server Error: Could not delete book');
+            }
+            
+            return redirect(303, '/dashboard');
+        } catch (error: any) {
+            return fail(422, {
+                error: error.message
+            });
+        }
     }
 } satisfies Actions;
