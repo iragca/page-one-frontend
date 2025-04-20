@@ -77,7 +77,6 @@
 		justify-content: center;
 		align-items: start;
 		text-align: justify;
-		width: 100%;
 	}
 
 	input {
