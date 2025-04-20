@@ -1,4 +1,16 @@
-<button class="shelf">
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	const { url = "/" } = $props();
+
+	function handleClick() {
+		if (url) {
+			goto(url);
+		}
+	}
+</script>
+
+<button class="shelf" onclick={handleClick}>
 	<div class="container">
 		<span class="material-symbols-outlined"> list </span>
 		<slot />
@@ -14,7 +26,7 @@
 		gap: 0.2rem;
 		padding: 0.8rem;
 		border-radius: 0 4px 4px 0;
-        color: var(--light-gray);
+		color: var(--light-gray);
 		font-size: medium;
 		font-weight: bolder;
 	}
@@ -23,16 +35,16 @@
 		background-color: var(--background-color-2);
 		border-radius: 4px;
 		cursor: pointer;
-        color: white;
+		color: white;
 	}
 
-    .container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+	.container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
 
-    .material-symbols-outlined {
-        font-size: 20px;
-    }
+	.material-symbols-outlined {
+		font-size: 20px;
+	}
 </style>
