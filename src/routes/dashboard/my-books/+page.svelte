@@ -3,7 +3,6 @@
 	import ButtonWithIcon from '$lib/components/buttons/ButtonWithIcon.svelte';
 	import { closeSidebar } from '$lib/stores/sidebar';
 	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
 
 	let response: { data: PageData } = $props();
 
