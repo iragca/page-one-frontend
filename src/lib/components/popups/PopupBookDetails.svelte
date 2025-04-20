@@ -1,18 +1,45 @@
 <script lang="ts">
 	import BookInfoCard from '../books/BookInfoCard.svelte';
+	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
-	import { chosenBook } from '$lib/stores/dashboard';
+	import { chosenBook, showBookDetails, editMode } from '$lib/stores/dashboard';
+
+	function closeBookDetails() {
+		$showBookDetails = false;
+	}
+
+	function toggleEditMode() {
+		$editMode = !$editMode;
+	}
 </script>
 
-<div class="book-info-card-bg">
-</div>
+<div class="book-info-card-bg"></div>
 
 <div class="book-info-card-location">
 	<div class="book-info-card">
-		<PopupBookNavBar bookTitle={$chosenBook.title} />
-		<BookInfoCard book={$chosenBook} />
+		<PopupBookNavBar let:SimpleButton>
+			<button onclick={closeBookDetails} aria-label="Close">
+				<SimpleButton iconName="close" />
+			</button>
+			<div class="bookTitle">{$chosenBook.title || 'No title retrieved'}</div>
+			{#if $editMode}
+				<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
+				<button><SimpleButton iconName="delete" /></button>
+			{/if}
+			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
+			<button><SimpleButton iconName="download" /></button>
+		</PopupBookNavBar>
+		{#if $editMode}
+			<form id="editBookForm" method="POST" action="?/editBook">
+				<input type="hidden" name="bookId" value={$chosenBook._id} />
+				<BookInfoCardEditMode book={$chosenBook} />
+			</form>
+		{:else}
+			<BookInfoCard book={$chosenBook} />
+		{/if}
 	</div>
 </div>
+
 <style>
 	.book-info-card-bg {
 		position: absolute;
@@ -54,5 +81,14 @@
 		backdrop-filter: blur(20px); /* the blur gives the frosted effect */
 		-webkit-backdrop-filter: blur(20px); /* for Safari */
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	}
+
+	.bookTitle {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
+		color: var(--light-gray);
+		text-align: center;
 	}
 </style>

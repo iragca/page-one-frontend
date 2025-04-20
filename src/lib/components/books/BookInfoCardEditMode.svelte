@@ -5,17 +5,33 @@
 {#snippet metadataPair(key: string, value: string)}
 	<div class="pair">
 		<div class="key">{key}</div>
-		<div class="value">{value}</div>
+		<input type="text" class="value" name={key} placeholder={value} {value} />
 	</div>
 {/snippet}
 
 <div class="background">
-	<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
+	<div>
+		<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
+		<input type="text" class="cover" name="cover_photo" value={book.cover_photo} />
+	</div>
+
 	<div class="details">
 		<div class="header">
 			<div class="left">
-				<h1 class="title">{book.title}</h1>
-				<h2 class="author">Author — {book.author}</h2>
+				<input
+					type="text"
+					class="title"
+					name="title"
+					placeholder={book.title}
+					value={book.title}
+				/>
+				<input
+					type="text"
+					class="author"
+					name="author"
+					placeholder={book.author}
+					value={book.author}
+				/>
 			</div>
 			<div class="right">⭐⭐⭐⭐⭐</div>
 		</div>
@@ -27,7 +43,13 @@
 				{@render metadataPair('PUBLISHED', book.year_published)}
 				{@render metadataPair('ISBN', book.isbn_issn)}
 			</div>
-			<div class="description">{book.description}</div>
+			<!-- TODO: FIX THE OVERFLOW ISSUE of the textarea -->
+			<textarea
+				class="description"
+				name="description"
+				value={book.description}
+				placeholder={book.description}
+			></textarea>
 		</div>
 	</div>
 </div>
@@ -55,6 +77,11 @@
 		justify-content: center;
 		align-items: start;
 		text-align: justify;
+		width: 100%;
+	}
+
+	input {
+		all: unset;
 	}
 
 	.body {
@@ -82,6 +109,12 @@
 
 	.left {
 		gap: 16px;
+		width: 100%;
+	}
+
+	.right {
+		align-self: flex-end;
+		width: fit-content;
 	}
 
 	.title {
@@ -89,6 +122,7 @@
 		font-size: 1.5em;
 		font-weight: bold;
 		text-align: left;
+		width: 100%;
 	}
 	.author {
 		all: unset;
@@ -103,6 +137,7 @@
 
 	.body {
 		gap: 24px;
+		width: 100%;
 	}
 
 	.divider {
@@ -114,9 +149,10 @@
 		margin: 12px 0;
 	}
 
-	.description {
-		white-space: pre-wrap;
-		max-height: fit-content;
+	textarea {
+		all: unset;
+		resize: none;
+		field-sizing: content;
 	}
 
 	.pair {

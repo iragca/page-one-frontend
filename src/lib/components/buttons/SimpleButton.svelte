@@ -1,16 +1,12 @@
 <script lang="ts">
-	let { iconName, onclick = () => {} }: { iconName: string; onclick: () => void } = $props();
+	let { iconName }: { iconName: string } = $props();
 </script>
 
-{#snippet icon(iconName: string, onclick: () => void = () => {})}
-	<button class="icon-link" {onclick}>
-		<div class="icon">
-			<span class="material-symbols-outlined">{iconName}</span>
-		</div>
-	</button>
-{/snippet}
-
-{@render icon(iconName, onclick)}
+<button class="icon-link">
+	<div class="icon">
+		<span class="material-symbols-outlined">{iconName}</span>
+	</div>
+</button>
 
 <style>
 	.icon-link {

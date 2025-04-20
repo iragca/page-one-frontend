@@ -1,21 +1,9 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/buttons/SimpleButton.svelte';
-	import { showBookDetails } from '$lib/stores/dashboard';
-
-	let { bookTitle } = $props();
-
-	function closeBookDetails() {
-		$showBookDetails = false;
-	}
 </script>
 
 <nav class="navbar">
-	<SimpleButton iconName="close" onclick={closeBookDetails} />
-	<div class="bookTitle">
-		{bookTitle}
-	</div>
-	<SimpleButton iconName="edit" onclick={() => {}} />
-	<SimpleButton iconName="download" onclick={() => {}} />
+	<slot {SimpleButton}/>
 </nav>
 
 <style>
@@ -31,15 +19,6 @@
 		gap: 12px;
 
 		border-radius: 12px;
-	}
-
-	.bookTitle {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		width: 100%;
-		color: var(--light-gray);
-		text-align: center;
 	}
 
 	/* Responsive design */
