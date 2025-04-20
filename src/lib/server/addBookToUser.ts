@@ -13,8 +13,8 @@ export const addbook = async (username: string, isbn_issn: string) => {
     if (response.ok) {
         return await response.json();
     } else if (response.status === 404) {
-        throw new Error('Book not found');
+        throw new Error('Book not found.');
     } else {
-        throw new Error('Something went wrong');
+        throw new Error('Something went wrong.');
     }
 };
