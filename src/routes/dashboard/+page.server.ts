@@ -93,24 +93,29 @@ export const actions = {
         const username = cookies.get('username') as string;
 
         try {
-            const response = await addbook(username, isbn_issn);
-
-            if (response.status === 409) {
-                return fail(409, {
-                    error: 'Book already exists in your collection.'
-                });
-            } else if (response.status === 404) {
-                return fail(404, {
-                    error: 'Book not found.'
-                });
-            } else if (response.status === 422) {
-                return fail(422, {
-                    error: 'Invalid ISBN/ISSN.'
-                });
+            const result = await addbook(username, isbn_issn);
+            // Assuming addbook returns a JSON object with a success field
+            if (result.success) {
+                return { success: true };
             }
         } catch (error: any) {
-            return fail(422, {
-                error: error.message
+            // Handle specific error messages based on the error thrown
+            if (error.message === 'Book already exists in your collection.') {
+                return fail(409, {
+                    error: error.message
+                });
+            } else if (error.message === 'Book not found.') {
+                return fail(404, {
+                    error: error.message
+                });
+            } else if (error.message === 'Invalid ISBN/ISSN.') {
+                return fail(422, {
+                    error: error.message
+                });
+            }
+            // Handle other unexpected errors
+            return fail(500, {
+                error: 'An unexpected error occurred.'
             });
         }
     }
