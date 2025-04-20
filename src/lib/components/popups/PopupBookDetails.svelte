@@ -3,6 +3,7 @@
 	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
 	import { chosenBook, showBookDetails, editMode } from '$lib/stores/dashboard';
+	import SimpleButton from '../buttons/SimpleButton.svelte';
 
 	function closeBookDetails() {
 		$showBookDetails = false;
@@ -21,13 +22,18 @@
 			<button onclick={closeBookDetails} aria-label="Close">
 				<SimpleButton iconName="close" />
 			</button>
-			<div class="bookTitle">{$chosenBook.title || 'No title retrieved'}</div>
+			<div class="bookTitle">{$chosenBook.title}</div>
 			{#if $editMode}
 				<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
 				<form action="?/deleteBook" method="POST">
 					<input type="hidden" name="bookId" value={$chosenBook._id} />
 					<button type="submit"><SimpleButton iconName="delete" /></button>
 				</form>
+			{:else}
+			<form action="?/addBookToUser" method="POST">
+				<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+				<button type="submit"><SimpleButton iconName="playlist_add"/></button>
+			</form>
 			{/if}
 			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			<button><SimpleButton iconName="download" /></button>

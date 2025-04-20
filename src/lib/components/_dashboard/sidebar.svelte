@@ -6,12 +6,17 @@
 <div class="background">
 	<div class="grid">
 		<Profilecard />
+		<ShelvesCategory let:Shelves categoryName="Catalog">
+			<Shelves let:Shelf>
+				<Shelf url="/dashboard">All</Shelf>
+				<Shelf url="/dashboard/popular">Popular</Shelf>
+			</Shelves>
+		</ShelvesCategory>
 		<ShelvesCategory let:Shelves categoryName="My Library">
 				<Shelves let:Shelf>
-					<Shelf>My Books</Shelf>
-					<Shelf>Reading</Shelf>
-					<Shelf>Want to Read</Shelf>
-					<Shelf>Favorites</Shelf>
+					<Shelf url="/dashboard/my-books">My Books</Shelf>
+					<Shelf url="/dashboard/want-to-read">Want to Read</Shelf>
+					<Shelf url="/dashboard/favorites">Favorites</Shelf>
 				</Shelves>
 		</ShelvesCategory>
 	</div>
@@ -31,4 +36,5 @@
 		background-color: rgb(31, 31, 31, 0.5);
         border-right: 2px solid var(--background-color-3);
 	}
+
 </style>
