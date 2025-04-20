@@ -22,21 +22,12 @@
 				<SimpleButton iconName="close" />
 			</button>
 			<div class="bookTitle">{$chosenBook.title || 'No title retrieved'}</div>
-
 			{#if $editMode}
-				<button type="submit" form="editBookForm">
-					<SimpleButton iconName="save" />
-				</button>
-				<button>
-					<SimpleButton iconName="delete" />
-				</button>
+				<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
+				<button><SimpleButton iconName="delete" /></button>
 			{/if}
-			<button onclick={toggleEditMode}>
-				<SimpleButton iconName="edit" />
-			</button>
-			<button>
-				<SimpleButton iconName="download" />
-			</button>
+			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
+			<button><SimpleButton iconName="download" /></button>
 		</PopupBookNavBar>
 		{#if $editMode}
 			<form id="editBookForm" method="POST" action="?/editBook">
