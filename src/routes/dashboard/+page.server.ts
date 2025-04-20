@@ -1,6 +1,7 @@
 import { BACKEND_API_URL } from '$env/static/private';
 import { fail, redirect } from '@sveltejs/kit';
 import { editBook } from '$lib/server/editBook';
+import { addbook } from '$lib/server/addBookToUser';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async (event) => {
@@ -78,8 +79,35 @@ export const actions = {
             } else if (response.status === 500) {
                 throw new Error('Internal Server Error: Could not delete book');
             }
-            
+
             return redirect(303, '/dashboard');
+        } catch (error: any) {
+            return fail(422, {
+                error: error.message
+            });
+        }
+    },
+    addBookToUser: async ({ request, cookies }) => {
+        const data = await request.formData();
+        const isbn_issn = data.get('isbn_issn') as string;
+        const username = cookies.get('username') as string;
+
+        try {
+            const response = await addbook(username, isbn_issn);
+
+            if (response.status === 409) {
+                return fail(409, {
+                    error: 'Book already exists in your collection.'
+                });
+            } else if (response.status === 404) {
+                return fail(404, {
+                    error: 'Book not found.'
+                });
+            } else if (response.status === 422) {
+                return fail(422, {
+                    error: 'Invalid ISBN/ISSN.'
+                });
+            }
         } catch (error: any) {
             return fail(422, {
                 error: error.message

@@ -5,7 +5,8 @@ export let showBookDetails = writable(false);
 export let books = writable([]);
 export let chosenBook = writable({
     _id: null,
-    title: 'No title'
+    title: 'No title',
+    isbn_issn: 'No ISBN',
 });
 export let sortBy = writable('title');
 export let sortOrder = writable('asc');
