@@ -9,14 +9,14 @@
 		<ShelvesCategory let:Shelves categoryName="Catalog">
 			<Shelves let:Shelf>
 				<Shelf url="/dashboard">All</Shelf>
-				<Shelf>Popular</Shelf>
+				<Shelf url="/dashboard/popular">Popular</Shelf>
 			</Shelves>
 		</ShelvesCategory>
 		<ShelvesCategory let:Shelves categoryName="My Library">
 				<Shelves let:Shelf>
 					<Shelf url="/dashboard/my-books">My Books</Shelf>
-					<Shelf>Want to Read</Shelf>
-					<Shelf>Favorites</Shelf>
+					<Shelf url="/dashboard/want-to-read">Want to Read</Shelf>
+					<Shelf url="/dashboard/favorites">Favorites</Shelf>
 				</Shelves>
 		</ShelvesCategory>
 	</div>
