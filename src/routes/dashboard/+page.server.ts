@@ -4,11 +4,13 @@ import { editBook } from '$lib/server/editBook';
 import { addbook } from '$lib/server/addBookToUser';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load = (async (event) => {
+export const load = (async ({ cookies }) => {
 
     // Fetch the list of all books from the backend
     try {
-        const response = await fetch(`${BACKEND_API_URL}/books`)
+        const username = cookies.get('username') as string;
+
+        const response = await fetch(`${BACKEND_API_URL}/books?username=${username}`)
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
