@@ -10,10 +10,7 @@
 
 <style>
     .background {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 10px;
+        display: inline-flex;
         background-color: var(--background-color-1);
         gap: 12px
     }
