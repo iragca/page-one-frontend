@@ -3,8 +3,6 @@
 	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
 	import { chosenBook, showBookDetails, editMode } from '$lib/stores/dashboard';
-	import { onMount } from 'svelte';
-	import { on } from 'svelte/events';
 
 	function closeBookDetails() {
 		$showBookDetails = false;
