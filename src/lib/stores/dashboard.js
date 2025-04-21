@@ -7,6 +7,7 @@ export let chosenBook = writable({
     _id: null,
     title: 'No title',
     isbn_issn: 'No ISBN',
+    owned: false,
 });
 export let sortBy = writable('title');
 export let sortOrder = writable('asc');

@@ -12,6 +12,13 @@
 	function toggleEditMode() {
 		$editMode = !$editMode;
 	}
+
+	let playlistIcon = 'playlist_add';
+	let bookAction = 'addBookToUser';
+	if ($chosenBook.owned) {
+		playlistIcon = 'playlist_remove';
+		bookAction = 'removeBookFromUser';
+	}
 </script>
 
 <div class="book-info-card-bg"></div>
@@ -30,10 +37,10 @@
 					<button type="submit"><SimpleButton iconName="delete" /></button>
 				</form>
 			{:else}
-			<form action="?/addBookToUser" method="POST">
-				<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-				<button type="submit"><SimpleButton iconName="playlist_add"/></button>
-			</form>
+				<form action="?/{bookAction}" method="POST">
+					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+					<button type="submit"><SimpleButton iconName={playlistIcon} /></button>
+				</form>
 			{/if}
 			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			<button><SimpleButton iconName="download" /></button>

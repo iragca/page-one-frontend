@@ -35,7 +35,7 @@
 	<div class="grid">
 		{#if fetchFailed}
 			<div class="error-message">{errorMessage}</div>
-		{:else if books.length === 0}
+		{:else if $books.length === 0}
 			<div class="no-books">No books available</div>
 		{:else if $viewMode === 'list'}
 			<Listview {books} />
