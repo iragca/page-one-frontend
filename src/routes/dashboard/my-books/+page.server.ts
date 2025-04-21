@@ -1,5 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 import { BACKEND_API_URL } from '$env/static/private';
+import { removebook } from '$lib/server/userbook';
 
 export const load = (async ({ cookies }) => {
     // Fetch the list of all books from the backend
@@ -24,3 +25,34 @@ export const load = (async ({ cookies }) => {
         }
     }
 }) satisfies PageServerLoad;
+
+export const actions = {
+    removeBookFromUser: async ({ request, cookies }) => {
+        const data = await request.formData();
+        const isbn_issn = data.get('isbn_issn') as string;
+        const username = cookies.get('username') as string;
+
+        try {
+            const result = await removebook(username, isbn_issn);
+            // Assuming removebook returns a JSON object with a success field
+            if (result.success) {
+                return { success: true };
+            }
+        } catch (error: any) {
+            // Handle specific error messages based on the error thrown
+            if (error.message === 'Book not found in your collection.') {
+                return fail(404, {
+                    error: error.message
+                });
+            } else if (error.message === 'Invalid ISBN/ISSN.') {
+                return fail(422, {
+                    error: error.message
+                });
+            }
+            // Handle other unexpected errors
+            return fail(500, {
+                error: 'An unexpected error occurred.'
+            });
+        }
+    }
+} satisfies Actions;

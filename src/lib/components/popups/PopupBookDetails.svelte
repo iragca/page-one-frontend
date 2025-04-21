@@ -3,7 +3,6 @@
 	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
 	import { chosenBook, showBookDetails, editMode } from '$lib/stores/dashboard';
-	import SimpleButton from '../buttons/SimpleButton.svelte';
 
 	function closeBookDetails() {
 		$showBookDetails = false;
@@ -29,11 +28,16 @@
 					<input type="hidden" name="bookId" value={$chosenBook._id} />
 					<button type="submit"><SimpleButton iconName="delete" /></button>
 				</form>
+			{:else if $chosenBook.owned}
+				<form action="?/removeBookFromUser" method="POST">
+					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+					<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
+				</form>
 			{:else}
-			<form action="?/addBookToUser" method="POST">
-				<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-				<button type="submit"><SimpleButton iconName="playlist_add"/></button>
-			</form>
+				<form action="?/addBookToUser" method="POST">
+					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+					<button type="submit"><SimpleButton iconName="playlist_add" /></button>
+				</form>
 			{/if}
 			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			<button><SimpleButton iconName="download" /></button>
