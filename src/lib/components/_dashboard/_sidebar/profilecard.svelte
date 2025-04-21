@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { faker, fr } from '@faker-js/faker';
-	import { copyToClipboard } from '$lib/utils/copyToClipboard';
+	import { copyToClipboard } from '$lib/client/copyToClipboard';
 	import Tooltip from '$lib/components/tooltip.svelte';
 	import ModalButton from './_profilecard/modal-button.svelte';
 	import ModalDivider from './_profilecard/modal-divider.svelte';
