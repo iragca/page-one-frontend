@@ -1,13 +1,30 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+
+	// Number of seconds to wait before redirecting
+	let countdown = $state(5);
+
+	onMount(() => {
+		if ($page.status === 404) {
+			const interval = setInterval(() => {
+				countdown -= 1;
+
+				if (countdown <= 0) {
+					clearInterval(interval);
+					window.location.href = '/';
+				}
+			}, 1000);
+		}
+	});
 </script>
 
 {#if $page.status === 404}
 	<div class="background _404">
 		<img class="error-image" src="/images/404-cute!.png" alt="404 Error" />
+		<div class="countdown">Redirecting in {countdown} seconds...</div>
 	</div>
-
 {:else if $page.status === 500}
 	<div class="background _500">
 		<img class="error-image" src="/images/500.png" alt="500 Error" />
@@ -35,7 +52,7 @@
 	}
 
 	.background {
-		display: flex;
+		display: inline-flex;
 		flex-direction: column;
 		background-color: #171a1d;
 		height: 100vh;
@@ -43,8 +60,8 @@
 		justify-content: center;
 		align-items: center;
 	}
-
 	._404 {
 		background-color: #32312f;
+		gap: 1rem;
 	}
 </style>
