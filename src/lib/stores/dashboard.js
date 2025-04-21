@@ -12,3 +12,4 @@ export let chosenBook = writable({
 export let sortBy = writable('title');
 export let sortOrder = writable('asc');
 export let editMode = writable(false);
+export let library = writable('catalog');

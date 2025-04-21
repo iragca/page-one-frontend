@@ -2,6 +2,7 @@
 	import BookBrowser from '$lib/components/_dashboard/bookbrowser.svelte';
 	import ButtonWithIcon from '$lib/components/buttons/ButtonWithIcon.svelte';
 	import { closeSidebar } from '$lib/stores/sidebar';
+	import { library } from '$lib/stores/dashboard';
 	import type { PageData } from './$types';
 
 	let response: { data: PageData } = $props();
@@ -10,6 +11,8 @@
 	let toggleSidebar = () => {
 		$closeSidebar = !$closeSidebar;
 	};
+
+	$library = 'my-books';
 </script>
 
 <BookBrowser {response}>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { showBookDetails } from '$lib/stores/dashboard';
-	import { chosenBook } from '$lib/stores/dashboard';
+	import { chosenBook, library } from '$lib/stores/dashboard';
 
 	let { book } = $props();
 
@@ -17,15 +17,27 @@
 	}
 </script>
 
-<button class="book" onmouseenter={() => (hovering = true)} onmouseleave={() => (hovering = false) } onclick={openBookDetails}>
+<button
+	class="book"
+	onmouseenter={() => (hovering = true)}
+	onmouseleave={() => (hovering = false)}
+	onclick={openBookDetails}
+>
+	{#if book.owned && $library === 'catalog'}
+		<div class="layer banner"><div class="owned"></div></div>
+	{/if}
 	{#if hovering}
 		<div class="layer book-icon" transition:fade={transitionOptions}>
 			<span class="material-symbols-outlined"> menu_book </span>
 		</div>
 		<div class="layer vignette" transition:fade={transitionOptions}></div>
 	{/if}
-	<img class="layer book-image" src={book.cover_photo || '/images/no-cover-retrieved.png'} alt={book.title} />
-	</button>
+	<img
+		class="layer book-image"
+		src={book.cover_photo || '/images/no-cover-retrieved.png'}
+		alt={book.title}
+	/>
+</button>
 
 <style>
 	.book {
@@ -53,6 +65,29 @@
 		width: 40px;
 		border-radius: 50%;
 		z-index: 3;
+	}
+
+	.banner {
+		overflow: hidden;
+		display: inline-flex;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		pointer-events: none;
+	}
+
+	.owned {
+		position: relative;
+		top: 1em;
+		left: 64%;
+		height: fit-content;
+		width: 6em;
+		background-color: goldenrod;
+		transform: rotate(45deg);
+		font-weight: bold;
+		font-size: clamp(0.5em, 0.8em, 1em);
+		padding: 0.25rem 0.5rem;
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.64);
 	}
 
 	.material-symbols-outlined {
