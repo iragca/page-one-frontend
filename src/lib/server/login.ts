@@ -14,10 +14,13 @@ export const login = async (username: string, password: string) => {
 
     if (response.ok) {
         return await response.json();
+    } else if (response.status === 401) {
+        throw new Error('Invalid password');
+    } else if (response.status === 404) {
+        throw new Error('User not found');
     } else if (response.status === 500) {
         throw new Error('Wrong password');
-    }
-    else {
+    } else {
         throw new Error('Login failed');
     }
 };
