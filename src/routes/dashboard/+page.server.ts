@@ -1,6 +1,7 @@
 import { BACKEND_API_URL } from '$env/static/private';
 import { fail, redirect } from '@sveltejs/kit';
 import { editBook } from '$lib/server/editBook';
+import { uploadNewBook } from '$lib/server/uploadNewBook';
 import { addbook, removebook } from '$lib/server/userbook';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -150,5 +151,34 @@ export const actions = {
         }
 
 
+    },
+    uploadNewBook: async ({ request }) => {
+        const data = await request.formData();
+
+        try {
+            const response = await uploadNewBook({
+                title: data.get('title') as string,
+                author: data.get('author') as string,
+                genre: data.get('GENRE') as string,
+                year_published: data.get('PUBLISHED') as string,
+                publisher: data.get('PUBLISHER') as string,
+                isbn_issn: data.get('ISBN') as string,
+                cover_photo: data.get('cover_photo') as string,
+                description: data.get('description') as string,
+            })
+
+        } catch (error: any) {
+            // Handle specific error messages
+            if (error.message === 'Bad Request: Invalid book data') {
+                return fail(400, {
+                    error: error.message
+                });
+            }
+            // Handle other errors
+            return fail(422, {
+                error: error.message
+            });
+
+        }
     }
 } satisfies Actions;
