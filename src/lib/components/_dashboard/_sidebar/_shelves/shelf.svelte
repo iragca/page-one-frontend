@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
-	const { url = "/" } = $props();
+	const { url = "/", iconName = "list" } = $props();
 
 	function handleClick() {
 		if (url) {
@@ -12,7 +12,7 @@
 
 <button class="shelf" onclick={handleClick}>
 	<div class="container">
-		<span class="material-symbols-outlined"> list </span>
+		<span class="material-symbols-outlined"> {iconName} </span>
 		<slot />
 	</div>
 </button>
