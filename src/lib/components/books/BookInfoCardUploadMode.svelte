@@ -10,6 +10,12 @@
 		isbn_issn: '1234567890',
 		description: 'Book Description'
 	});
+
+	function fallbackImage(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.onerror = null; // Prevent infinite loop
+		target.src = 'images/no-cover-retrieved.png'; // Fallback image
+	}
 </script>
 
 {#snippet metadataPair(key: string, value: string)}
@@ -21,8 +27,8 @@
 
 <div class="background">
 	<div class="cover-container">
-		<img class="cover" src={book.cover_photo || "images/no-cover-retrieved.png"} alt={book.title + ' (image)'} />
-		<input type="text" class="cover-url" name="cover_photo" bind:value={book.cover_photo} required />
+		<img class="cover" src={book.cover_photo} onerror={fallbackImage} alt={book.title + ' (image)'} />
+		<input type="text" class="cover-url" name="cover_photo" bind:value={book.cover_photo} placeholder="https://placehold.co/150x225" required />
 	</div>
 
 	<div class="details">
