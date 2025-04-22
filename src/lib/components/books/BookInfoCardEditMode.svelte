@@ -10,7 +10,7 @@
 {/snippet}
 
 <div class="background">
-	<div>
+	<div class="cover-container">
 		<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
 		<input type="text" class="cover" name="cover_photo" value={book.cover_photo} />
 	</div>
@@ -70,6 +70,13 @@
 		max-width: 200px;
 		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.64);
 	}
+
+	.cover-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
 
 	.details {
 		display: flex;

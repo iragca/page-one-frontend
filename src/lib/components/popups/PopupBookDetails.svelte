@@ -13,8 +13,7 @@
 	}
 </script>
 
-<div class="book-info-card-bg"></div>
-
+<div class="book-info-card-bg">
 <div class="book-info-card-location">
 	<div class="book-info-card">
 		<PopupBookNavBar let:SimpleButton>
@@ -52,9 +51,14 @@
 		{/if}
 	</div>
 </div>
+</div>
+
 
 <style>
 	.book-info-card-bg {
+		display: flex;
+		justify-content: center;
+		align-items: start;
 		position: absolute;
 		top: 0px;
 		left: 0px;
@@ -67,7 +71,7 @@
 	}
 
 	.book-info-card-location {
-		position: fixed;
+		position: sticky;
 		top: 0px;
 		display: flex;
 		justify-content: center;
