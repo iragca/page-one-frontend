@@ -173,4 +173,7 @@
 		color: var(--light-gray);
 		width: 100px;
 	}
+	img {
+		user-select: none;
+	}
 </style>
