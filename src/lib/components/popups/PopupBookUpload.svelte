@@ -7,36 +7,25 @@
 		$showBookUpload = false;
 	}
 
-	// Placeholder book data for testing purposes
-	let pb = $state({
-		title: 'Book Title',
-		author: 'Book Author',
-		cover_photo: 'https://placehold.co/150x225',
-		genre: 'Book Genre',
-		publisher: 'Book Publisher',
-		year_published: '2023',
-		isbn_issn: '1234567890',
-		description: 'Book Description',
-	});
 </script>
 
 <div class="book-info-card-bg">
-
-<div class="book-info-card-location">
-	<div class="book-info-card">
-		<PopupBookNavBar let:SimpleButton>
-			<button onclick={closeBookUpload} aria-label="Close">
-				<SimpleButton iconName="close" />
-			</button>
-			<div class="bookTitle">Add a new book</div>
-			<form action="?/removeBookFromUser" method="POST">
-				<button type="submit"><SimpleButton iconName="check" /></button>
+	<div class="book-info-card-location">
+		<div class="book-info-card">
+			<PopupBookNavBar let:SimpleButton>
+				<button onclick={closeBookUpload} aria-label="Close">
+					<SimpleButton iconName="close" />
+				</button>
+				<div class="bookTitle">Add a new book</div>
+				<button type="submit" form="uploadBookForm"><SimpleButton iconName="check" /></button>
+			</PopupBookNavBar>
+			<form action="?/uploadNewBook" method="POST" id="uploadBookForm">
+				<BookInfoCardUploadMode />
 			</form>
-		</PopupBookNavBar>
-		<BookInfoCardUploadMode book={pb} />
+		</div>
 	</div>
 </div>
-</div>
+
 <style>
 	.book-info-card-bg {
 		display: flex;

@@ -43,7 +43,6 @@
 				{@render metadataPair('PUBLISHED', book.year_published)}
 				{@render metadataPair('ISBN', book.isbn_issn)}
 			</div>
-			<!-- TODO: FIX THE OVERFLOW ISSUE of the textarea -->
 			<textarea
 				class="description"
 				name="description"

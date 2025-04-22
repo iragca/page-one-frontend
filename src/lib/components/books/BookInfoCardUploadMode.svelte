@@ -1,35 +1,35 @@
 <script lang="ts">
-	let { book } = $props();
+	// Placeholder book data for testing purposes
+	let book = $state({
+		title: 'Book Title',
+		author: 'Book Author',
+		cover_photo: 'https://placehold.co/150x225',
+		genre: 'Book Genre',
+		publisher: 'Book Publisher',
+		year_published: '2023',
+		isbn_issn: '1234567890',
+		description: 'Book Description'
+	});
 </script>
 
 {#snippet metadataPair(key: string, value: string)}
 	<div class="pair">
 		<div class="key">{key}</div>
-		<input type="text" class="value" name={key} placeholder={value} />
+		<input type="text" class="value" name={key} placeholder={value} required/>
 	</div>
 {/snippet}
 
 <div class="background">
 	<div class="cover-container">
-		<img class="cover" src={book.cover_photo} alt={book.title + ' (image)'} />
-		<input type="text" class="cover-url" name="cover_photo" bind:value={book.cover_photo} />
+		<img class="cover" src={book.cover_photo || "images/no-cover-retrieved.png"} alt={book.title + ' (image)'} />
+		<input type="text" class="cover-url" name="cover_photo" bind:value={book.cover_photo} required />
 	</div>
 
 	<div class="details">
 		<div class="header">
 			<div class="left">
-				<input
-					type="text"
-					class="title"
-					name="title"
-					placeholder={book.title}
-				/>
-				<input
-					type="text"
-					class="author"
-					name="author"
-					placeholder={book.author}
-				/>
+				<input type="text" class="title" name="title" placeholder={book.title} required/>
+				<input type="text" class="author" name="author" placeholder={book.author} required/>
 			</div>
 			<div class="right">⭐⭐⭐⭐⭐</div>
 		</div>
@@ -41,12 +41,7 @@
 				{@render metadataPair('PUBLISHED', book.year_published)}
 				{@render metadataPair('ISBN', book.isbn_issn)}
 			</div>
-			<!-- TODO: FIX THE OVERFLOW ISSUE of the textarea -->
-			<textarea
-				class="description"
-				name="description"
-				placeholder={book.description}
-			></textarea>
+			<textarea class="description" name="description" placeholder={book.description} required></textarea>
 		</div>
 	</div>
 </div>
@@ -65,16 +60,17 @@
 	.cover {
 		object-fit: cover;
 		width: clamp(150px, 200px, 200px);
-        height: clamp(225px, 300px, 300px);
+		height: clamp(225px, 300px, 300px);
 		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.64);
 	}
 
-    .cover-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-    }
+	.cover-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: fit-content;
+		gap: 8px;
+	}
 
 	.details {
 		display: flex;
@@ -86,6 +82,7 @@
 
 	input {
 		all: unset;
+		width: fit-content;
 	}
 
 	.body {
