@@ -15,7 +15,7 @@
 		<div class="header">
 			<div class="left">
 				<h1 class="title">{book.title}</h1>
-				<h2 class="author">Author — {book.author}</h2>
+				<h2 class="author">{book.author}</h2>
 			</div>
 			<div class="right">⭐⭐⭐⭐⭐</div>
 		</div>
@@ -95,6 +95,10 @@
 		font-size: 1.2em;
 		font-weight: bold;
 		color: var(--light-gray);
+	}
+
+	.author::before {
+		content: 'Author — ';
 	}
 
 	.right {
