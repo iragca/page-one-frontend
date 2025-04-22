@@ -42,7 +42,6 @@
 {#if showModal}
 	<button class="modal" style="top: {mouseY}px; left: {mouseX}px;" onmouseleave={closeModal}>
 		<ModalButton action={() => {goto('/dashboard')}} name="Dashboard" icon="home" />
-		<ModalButton action={() => {goto('/settings/account')}} name="Account" icon="account_circle" />
 		<ModalButton action={() => {goto('/logout')}} name="Logout" icon="logout" />
 		<ModalDivider />
 		<ModalButton action={() => {goto('/settings')}} name="Settings" icon="settings" />
