@@ -19,6 +19,7 @@
 	<div class="content-container">
 		<div class="form-container">
 			<h1 class="form-header">Password</h1>
+			<span>Update your current password</span>
 			<ModalDivider />
 			<form method="POST" class="form">
 				<div class="error-container">
