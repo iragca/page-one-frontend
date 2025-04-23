@@ -1,12 +1,13 @@
 import type { PageServerLoad, Actions } from './$types';
 import { udpatePassword } from '$lib/server/updatepassword';
+import { redirect, fail } from '@sveltejs/kit';
 
 export const load = (async () => {
     return {};
 }) satisfies PageServerLoad;
 
 export const actions = {
-    udpatePassword: async ({ request }) => {
+    default: async ({ request }) => {
         const data = await request.formData();
 
         const username = data.get('username') as string;
@@ -18,14 +19,22 @@ export const actions = {
 
             // Data validation for confirming password is not yet implemented on the backend
             if (newPassword !== confirmPassword) {
-                return {
-                    status: 400,
+                return fail(400, {
                     error: 'New password and confirm password do not match'
-                };
+                });
             }
 
             const response = await udpatePassword(username, oldPassword, newPassword);
 
+            if (response.status === 200) {
+                // Password updated successfully
+                redirect(303, '/login');
+            } else if (response.status === 401) {
+                // Invalid password
+                return fail(401, {
+                    error: 'Invalid password'
+                });
+            }
         } catch (error: any) {
 
             if (error.message === 'Invalid password') {
