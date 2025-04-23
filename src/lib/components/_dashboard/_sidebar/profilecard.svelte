@@ -41,10 +41,10 @@
 
 {#if showModal}
 	<button class="modal" style="top: {mouseY}px; left: {mouseX}px;" onmouseleave={closeModal}>
-		<ModalButton action={() => {}} name="Account" icon="account_circle" />
+		<ModalButton action={() => {goto('/dashboard')}} name="Dashboard" icon="home" />
 		<ModalButton action={() => {goto('/logout')}} name="Logout" icon="logout" />
 		<ModalDivider />
-		<ModalButton action={() => {}} name="Settings" icon="settings" />
+		<ModalButton action={() => {goto('/settings')}} name="Settings" icon="settings" />
 	</button>
 {/if}
 

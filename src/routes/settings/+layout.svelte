@@ -24,23 +24,25 @@
 			<div class="grid-item sidebar">
 				<SideBar>
 					<Profilecard />
-					<ShelvesCategory let:Shelves categoryName="Catalog">
+					<ShelvesCategory let:Shelves categoryName="">
 						<Shelves let:Shelf>
-							<Shelf url="/dashboard">All</Shelf>
-							<Shelf url="/dashboard/popular">Popular</Shelf>
+							<Shelf url="/settings/profile" iconName="person">Public Profile</Shelf>
+							<Shelf url="/settings/admin" iconName="manage_accounts">Account</Shelf>
+							<Shelf url="/settings/brush" iconName="brush">Appearance</Shelf>
+							<Shelf url="/settings/accessibility" iconName="accessibility_new">Accessibility</Shelf>
+							<Shelf url="/settings/notifications" iconName="notifications">Notifications</Shelf>
 						</Shelves>
 					</ShelvesCategory>
-					<ShelvesCategory let:Shelves categoryName="My Library">
+					<ShelvesCategory let:Shelves categoryName="Access">
 						<Shelves let:Shelf>
-							<Shelf url="/dashboard/my-books">My Books</Shelf>
-							<Shelf url="/dashboard/want-to-read">Want to Read</Shelf>
-							<Shelf url="/dashboard/favorites">Favorites</Shelf>
+							<Shelf url="/settings/billing" iconName="credit_card">Billing</Shelf>
+							<Shelf url="/settings/authentication" iconName="encrypted">Authentication</Shelf>
 						</Shelves>
 					</ShelvesCategory>
 				</SideBar>
 			</div>
 		{/if}
-		<div class="grid-item bookbrowser">{@render children()}</div>
+		<div class="grid-item settings">{@render children()}</div>
 	</div>
 </div>
 
@@ -65,7 +67,7 @@
 	.grid-item.sidebar {
 		flex: 0 0 250px; /* Fixed width for sidebar */
 	}
-	.grid-item.bookbrowser {
+	.grid-item.settings {
 		flex: 1; /* Takes the remaining space */
 	}
 </style>

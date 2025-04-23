@@ -30,6 +30,12 @@ export const actions = {
                     error: error.message
                 });
             }
+
+            if (error.message === 'User not found') {
+                return fail(404, {
+                    error: error.message
+                });
+            }
             // Handle other errors
             return fail(422, {
                 error: error.message

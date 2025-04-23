@@ -1,14 +1,15 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const login = async (username: string, password: string) => {
-    const response = await fetch(`${BACKEND_API_URL}/login`, {
+export const udpatePassword = async (username: string, oldPassword: string, newPassword: string) => {
+    const response = await fetch(`${BACKEND_API_URL}/authentication/update-password`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             username,
-            password
+            oldPassword,
+            newPassword
         })
     });
 
@@ -18,9 +19,7 @@ export const login = async (username: string, password: string) => {
         throw new Error('Invalid password');
     } else if (response.status === 404) {
         throw new Error('User not found');
-    } else if (response.status === 500) {
-        throw new Error('Wrong password');
     } else {
-        throw new Error('Login failed');
+        throw new Error('Signup failed');
     }
 };
