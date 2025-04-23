@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start_backend": "docker compose -f scripts/docker-compose.yml up -d",
-		"build_backend": "docker compose -f scripts/docker-compose.yml up -d --build",
+		"build_backend": "docker compose -f scripts/docker-compose.yml pull && docker compose -f scripts/docker-compose.yml up -d --build",
 		"stop_backend": "docker compose -f scripts/docker-compose.yml down",
 		"dev": "vite dev",
 		"build": "vite build",

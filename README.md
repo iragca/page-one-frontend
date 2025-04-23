@@ -30,6 +30,11 @@ Compose down
 npm run stop_backend
 ```
 
+To update and build the environment
+```bash
+npm run build_backend
+```
+
 Running the frontend server.
 
 Not recommended to do in Windows Subsystem for Linux (WSL).
