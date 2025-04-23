@@ -22,9 +22,6 @@
 			<span>Update your current password</span>
 			<ModalDivider />
 			<form method="POST" class="form">
-				<div class="error-container">
-					{@render errors()}
-				</div>
 				<input type="hidden" name="username" value={data.username} />
 				<div class="field">
 					<label for="old-password">Old Password</label>
@@ -69,6 +66,9 @@
 					</InputWithTextOnly>
 				</div>
 				<ButtonWithTextOnly text="Update Password" rounded disabled={differentPass || disableLogin} />
+				<div class="error-container">
+					{@render errors()}
+				</div>
 			</form>
 		</div>
 	</div>
@@ -78,7 +78,7 @@
 	{#if differentPass && confirmpass}
 		<AuthError error_message="Passwords do not match" />
 	{/if}
-	{#if disableLogin && newpass}
+	{#if disableLogin && newpass && confirmpass}
 		<AuthError error_message="Password must be at least 8 characters" />
 	{/if}
 	{#if form?.error}
