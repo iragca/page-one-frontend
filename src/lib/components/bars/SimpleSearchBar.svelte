@@ -1,9 +1,49 @@
+<script lang="ts">
+	import {books} from '$lib/stores/dashboard';
+	import {searchQuery, searchResults} from '$lib/stores/search';
+	import {createSearchIndex, searchBooks} from '$lib/client/searchService';
+	import {onMount} from 'svelte';
+
+	let searchIndex: any;
+
+	onMount(() => {
+		searchIndex = createSearchIndex($books);
+
+		books.subscribe(newBooks => {
+			searchIndex = createSearchIndex(newBooks);
+		});
+	});
+
+	function handleSearch(event: Event) {
+        const query = (event.target as HTMLInputElement).value;
+        searchQuery.set(query);
+        
+        if (!query.trim()) {
+            searchResults.set([]);
+            return;
+        }
+
+        const results = searchBooks(searchIndex, query);
+		searchResults.set(results.map(result => ({
+			...result.item,
+			score: result.score
+		})));
+		
+	}
+</script>
+
 <div class="search-bar">
-	<span class="material-symbols-outlined search">search</span>
-	<input class="text-box" type="text" placeholder="Search..." />
-	<div class="icon">
-		<span class="material-symbols-outlined option">manage_search</span>
-	</div>
+    <span class="material-symbols-outlined search">search</span>
+    <input 
+        class="text-box" 
+        type="text" 
+        placeholder="Search..." 
+        on:input={handleSearch}
+        bind:value={$searchQuery}
+    />
+    <div class="icon">
+        <span class="material-symbols-outlined option">manage_search</span>
+    </div>
 </div>
 
 <style>
