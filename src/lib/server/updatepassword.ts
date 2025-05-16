@@ -1,6 +1,6 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const udpatePassword = async (username: string, oldPassword: string, newPassword: string, svelte_fetch: Function) => {
+export const updatePassword = async (username: string, oldPassword: string, newPassword: string, svelte_fetch: Function) => {
     const response = await svelte_fetch(`${BACKEND_API_URL}/authentication/update-password`, {
         method: 'POST',
         headers: {
