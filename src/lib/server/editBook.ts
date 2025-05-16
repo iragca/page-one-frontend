@@ -1,10 +1,10 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const editBook = async (book: any) => {
+export const editBook = async (book: any, svelte_fetch: Function) => {
 
     const { _id, ...details } = book
 
-    const response = await fetch(`${BACKEND_API_URL}/books/${_id}`, {
+    const response = await svelte_fetch(`${BACKEND_API_URL}/books/${_id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

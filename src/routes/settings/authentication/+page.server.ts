@@ -7,7 +7,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    default: async ({ request }) => {
+    default: async ({ request, fetch }) => {
         const data = await request.formData();
 
         const username = data.get('username') as string;
@@ -24,7 +24,7 @@ export const actions = {
                 });
             }
 
-            const response = await udpatePassword(username, oldPassword, newPassword);
+            const response = await udpatePassword(username, oldPassword, newPassword, fetch);
 
             if (response.status === 200) {
                 // Password updated successfully

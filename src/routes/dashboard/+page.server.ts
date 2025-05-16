@@ -5,7 +5,7 @@ import { uploadNewBook } from '$lib/server/uploadNewBook';
 import { addbook, removebook } from '$lib/server/userbook';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load = (async ({ cookies }) => {
+export const load = (async ({ cookies, fetch }) => {
 
     // Fetch the list of all books from the backend
     try {
@@ -31,7 +31,7 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    editBook: async ({ request }) => {
+    editBook: async ({ request, fetch }) => {
         const data = await request.formData();
 
         try {
@@ -46,7 +46,8 @@ export const actions = {
                     publisher: data.get('PUBLISHER') as string,
                     isbn_issn: data.get('ISBN') as string,
                     cover_photo: data.get('cover_photo') as string,
-                }
+                },
+                fetch
             );
         } catch (error: any) {
 
@@ -90,13 +91,13 @@ export const actions = {
             });
         }
     },
-    addBookToUser: async ({ request, cookies }) => {
+    addBookToUser: async ({ request, cookies, fetch }) => {
         const data = await request.formData();
         const isbn_issn = data.get('isbn_issn') as string;
         const username = cookies.get('username') as string;
 
         try {
-            const result = await addbook(username, isbn_issn);
+            const result = await addbook(username, isbn_issn, fetch);
             // Assuming addbook returns a JSON object with a success field
             if (result.success) {
                 return { success: true };
@@ -122,13 +123,13 @@ export const actions = {
             });
         }
     },
-    removeBookFromUser: async ({ request, cookies }) => {
+    removeBookFromUser: async ({ request, cookies, fetch }) => {
         const data = await request.formData();
         const isbn_issn = data.get('isbn_issn') as string;
         const username = cookies.get('username') as string;
 
         try {
-            const result = await removebook(username, isbn_issn);
+            const result = await removebook(username, isbn_issn, fetch);
             // Assuming removebook returns a JSON object with a success field
             if (result.success) {
                 return { success: true };
@@ -152,7 +153,7 @@ export const actions = {
 
 
     },
-    uploadNewBook: async ({ request }) => {
+    uploadNewBook: async ({ request, fetch }) => {
         const data = await request.formData();
 
         try {
@@ -165,7 +166,8 @@ export const actions = {
                 isbn_issn: data.get('ISBN') as string,
                 cover_photo: data.get('cover_photo') as string,
                 description: data.get('description') as string,
-            })
+            }, fetch
+        )
 
         } catch (error: any) {
             // Handle specific error messages

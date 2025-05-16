@@ -1,8 +1,9 @@
 import type { PageServerLoad, Actions } from './$types';
 import { BACKEND_API_URL } from '$env/static/private';
 import { removebook } from '$lib/server/userbook';
+import { fail } from '@sveltejs/kit'
 
-export const load = (async ({ cookies }) => {
+export const load = (async ({ cookies, fetch }) => {
     // Fetch the list of all books from the backend
     try {
         const username = cookies.get('username') as string;
@@ -27,13 +28,13 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    removeBookFromUser: async ({ request, cookies }) => {
+    removeBookFromUser: async ({ request, cookies, fetch }) => {
         const data = await request.formData();
         const isbn_issn = data.get('isbn_issn') as string;
         const username = cookies.get('username') as string;
 
         try {
-            const result = await removebook(username, isbn_issn);
+            const result = await removebook(username, isbn_issn, fetch);
             // Assuming removebook returns a JSON object with a success field
             if (result.success) {
                 return { success: true };

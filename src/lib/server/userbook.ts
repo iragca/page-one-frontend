@@ -1,8 +1,8 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const addbook = async (username: string, isbn_issn: string) => {
+export const addbook = async (username: string, isbn_issn: string, svelte_fetch: Function) => {
 
-    const response = await fetch(`${BACKEND_API_URL}/books/user`, {
+    const response = await svelte_fetch(`${BACKEND_API_URL}/books/user`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,9 +19,9 @@ export const addbook = async (username: string, isbn_issn: string) => {
     }
 };
 
-export const removebook = async (username: string, isbn_issn: string) => {
+export const removebook = async (username: string, isbn_issn: string, svelte_fetch: Function) => {
 
-    const response = await fetch(`${BACKEND_API_URL}/books/user`, {
+    const response = await svelte_fetch(`${BACKEND_API_URL}/books/user`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

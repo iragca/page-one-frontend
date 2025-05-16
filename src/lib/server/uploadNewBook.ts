@@ -1,8 +1,8 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const uploadNewBook = async (book: any) => {
+export const uploadNewBook = async (book: any, svelte_fetch: Function) => {
 
-    const response = await fetch(`${BACKEND_API_URL}/books`, {
+    const response = await svelte_fetch(`${BACKEND_API_URL}/books`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -8,14 +8,15 @@ export const load = (async () => {
 
 
 export const actions = {
-    default: async ({ request }) => {
+    default: async ({ request, fetch }) => {
         const data = await request.formData();
 
         try {
             const response = await signup(
                 data.get('username') as string,
                 data.get('email') as string,
-                data.get('password') as string
+                data.get('password') as string,
+                fetch
             );
 
         } catch (error: any) {
