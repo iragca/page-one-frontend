@@ -4,7 +4,7 @@
 import { BACKEND_API_URL } from '$env/static/private';
 import type { PageServerLoad } from './$types';
 
-export const load = (async ({params}) => {
+export const load = (async ({ params, fetch }) => {
 
     const { bookId } = params;
 

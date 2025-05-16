@@ -8,13 +8,14 @@ export const load = (async () => {
 
 
 export const actions = {
-    default: async ({ cookies, request }) => {
+    default: async ({ cookies, request, fetch }) => {
         const data = await request.formData();
 
         try {
             const response = await login(
                 data.get('username') as string,
-                data.get('password') as string
+                data.get('password') as string,
+                fetch
             );
 
             // Set the cookie to indicate the user is logged in

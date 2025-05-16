@@ -1,7 +1,7 @@
 import { BACKEND_API_URL } from '$env/static/private';
 
-export const login = async (username: string, password: string) => {
-    const response = await fetch(`${BACKEND_API_URL}/login`, {
+export const login = async (username: string, password: string, svelte_fetch: Function) => {
+    const response = await svelte_fetch(`${BACKEND_API_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
