@@ -1,10 +1,13 @@
 <script lang="ts">
 	import BookEntry from './_books/book-entry.svelte';
 	import { books } from '$lib/stores/dashboard';
+	import {searchQuery, searchResults} from '$lib/stores/search'
+
+	$: displayedBooks = $searchQuery ? $searchResults : $books;
 </script>
 
 <div class="book-grid">
-	{#each $books as book}
+	{#each displayedBooks as book}
 		<BookEntry let:Book {book}>
 			<Book {book}></Book>
 		</BookEntry>

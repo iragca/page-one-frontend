@@ -3,11 +3,15 @@
 
 	import { faker } from '@faker-js/faker';
 	import { books } from '$lib/stores/dashboard';
+	import { searchQuery, searchResults } from '$lib/stores/search';
+
+    $: displayedBooks = $searchQuery ? $searchResults : $books;
+
 </script>
 
 <div class="list-container">
 	<div class="book-list">
-		{#each $books as book}
+		{#each displayedBooks as book}
 			<div class="book-container">
 				<div class="book">
                     <Book {book} />
