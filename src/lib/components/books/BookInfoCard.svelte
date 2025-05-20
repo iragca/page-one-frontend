@@ -2,9 +2,15 @@
 	let { book } = $props();
 	let { rating } = $state({rating: book.rating || 0})
 
-	function setRating(n: number) {
-		rating = n;
-		book.rating = n;
+	function setRating(stars: number) {
+		if (rating === stars) {
+			// Clicking the same star again removes the rating
+			rating = 0;
+			book.rating = 0;
+		} else {
+			rating = stars;
+			book.rating = stars;
+		}
 	}
 </script>
 
