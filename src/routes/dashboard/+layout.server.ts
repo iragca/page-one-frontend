@@ -12,6 +12,7 @@ export const load = (async ({ cookies }: { cookies: any }) => {
 
     return {
         username: cookies.get('username') || null,
-        profile_picture: cookies.get('profile_picture') || null
+        profile_picture: cookies.get('profile_picture') || null,
+        role: cookies.get('role') || 'user'
     };
 }) satisfies LayoutServerLoad;

@@ -1,8 +1,15 @@
+{#snippet metadataPair(key: string, value: string)}
+	<div class="pair">
+		<div class="key">{key}</div>
+		<div class="value">{value}</div>
+	</div>
+{/snippet}
+
 <script lang="ts">
 	import BookInfoCard from '../books/BookInfoCard.svelte';
 	import BookInfoCardEditMode from '../books/BookInfoCardEditMode.svelte';
 	import PopupBookNavBar from '../bars/PopupBookNavBar.svelte';
-	import { chosenBook, showBookDetails, editMode } from '$lib/stores/dashboard';
+	import { chosenBook, showBookDetails, editMode, userRole } from '$lib/stores/dashboard';
 
 	function closeBookDetails() {
 		$showBookDetails = false;
@@ -21,27 +28,41 @@
 				<SimpleButton iconName="close" />
 			</button>
 			<div class="bookTitle">{$chosenBook.title}</div>
-			{#if $editMode}
-				<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
-				<form action="?/deleteBook" method="POST">
-					<input type="hidden" name="bookId" value={$chosenBook._id} />
-					<button type="submit"><SimpleButton iconName="delete" /></button>
-				</form>
-			{:else if $chosenBook.owned}
-				<form action="?/removeBookFromUser" method="POST">
-					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-					<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
-				</form>
+			{#if $userRole === 'admin'}
+				{#if $editMode}
+					<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
+					<form action="?/deleteBook" method="POST">
+						<input type="hidden" name="bookId" value={$chosenBook._id} />
+						<button type="submit"><SimpleButton iconName="delete" /></button>
+					</form>
+				{:else if $chosenBook.owned}
+					<form action="?/removeBookFromUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
+					</form>
+				{:else}
+					<form action="?/addBookToUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_add" /></button>
+					</form>
+				{/if}
+				<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			{:else}
-				<form action="?/addBookToUser" method="POST">
-					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-					<button type="submit"><SimpleButton iconName="playlist_add" /></button>
-				</form>
+				{#if $chosenBook.owned}
+					<form action="?/removeBookFromUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
+					</form>
+				{:else}
+					<form action="?/addBookToUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_add" /></button>
+					</form>
+				{/if}
 			{/if}
-			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
 			<button><SimpleButton iconName="download" /></button>
 		</PopupBookNavBar>
-		{#if $editMode}
+		{#if $editMode && $userRole === 'admin'}
 			<form id="editBookForm" method="POST" action="?/editBook">
 				<input type="hidden" name="bookId" value={$chosenBook._id} />
 				<BookInfoCardEditMode book={$chosenBook} />

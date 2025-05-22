@@ -1,17 +1,5 @@
 <script lang="ts">
 	let { book } = $props();
-	let { rating } = $state({rating: book.rating || 0})
-
-	function setRating(stars: number) {
-		if (rating === stars) {
-			// Clicking the same star again removes the rating
-			rating = 0;
-			book.rating = 0;
-		} else {
-			rating = stars;
-			book.rating = stars;
-		}
-	}
 </script>
 
 {#snippet metadataPair(key: string, value: string)}
@@ -29,16 +17,7 @@
 				<h1 class="title">{book.title}</h1>
 				<h2 class="author">{book.author}</h2>
 			</div>
-			<div class="stars">
-				{#each Array(5) as _, i}
-				    <button
-					    class="star {i < rating ? 'active' : ''}"
-						onclick={() => setRating(i + 1)}
-						>★</button>
-				{/each}
-				<div class="rating-output">Rating is: {rating}/5</div>
-			</div>
-			
+			<div class="right">⭐⭐⭐⭐⭐</div>
 		</div>
 		<hr class="divider" />
 		<div class="body">
@@ -94,6 +73,7 @@
 	}
 
 	.left,
+	.right,
 	.body {
 		display: flex;
 		flex-direction: column;
@@ -121,25 +101,8 @@
 		content: 'Author — ';
 	}
 
-	.star {
+	.right {
 		align-self: flex-end;
-		font-size: 1.5em;
-		cursor: pointer;
-		color: gray;
-		transition: transform 0.2s;
-	}
-
-	.star.active {
-		color: gold;
-	}
-
-	.star:hover {
-		transform: scale(1.2);
-	}
-
-	.rating-output {
-		margin-top: 4px;
-		font-weight: bold;
 	}
 
 	.body {

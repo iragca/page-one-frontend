@@ -14,3 +14,6 @@ export let sortBy = writable('title');
 export let sortOrder = writable('asc');
 export let editMode = writable(false);
 export let library = writable('catalog');
+
+// Store for user role - either 'admin' or 'user'
+export const userRole = writable('user');

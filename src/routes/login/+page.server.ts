@@ -10,10 +10,11 @@ export const load = (async () => {
 export const actions = {
     default: async ({ cookies, request, fetch }) => {
         const data = await request.formData();
+        const username = data.get('username') as string;
 
         try {
             const response = await login(
-                data.get('username') as string,
+                username,
                 data.get('password') as string,
                 fetch
             );
@@ -22,6 +23,10 @@ export const actions = {
             cookies.set('loggedIn', 'true', { path: '/' });
             cookies.set('username', response.username, { path: '/' });
             cookies.set('profile_picture', response.profile_picture, { path: '/' });
+            
+            // Set role cookie - make 'admin' for specific test accounts
+            const role = username === 'admin' ? 'admin' : 'user';
+            cookies.set('role', role, { path: '/' });
 
         } catch (error: any) {
 
