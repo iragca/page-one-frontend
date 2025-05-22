@@ -13,36 +13,83 @@
 	//* The following variables are used to bind the input values to the component state. */
 	//* This allows us to use the values in the form submission and validation. */
 	// This doesn't check if the email is valid though.
-	let usernameInput = $state('');
-	let emailInput = $state('');
-	let passwordInput = $state('');
-	let confirmPasswordInput = $state('');
+	let usernameInput = $state(form?.data?.username || '');
+	let emailInput = $state(form?.data?.email || '');
+	let passwordInput = $state(form?.data?.password || '');
+	let confirmPasswordInput = $state(form?.data?.confirmPassword || '');
 
 	let differentPass = $derived(passwordInput !== confirmPasswordInput);
 
+	let passwordValidations = {
+		get length() { return passwordInput.length >= 8; },
+		get uppercase() { return /[A-Z]/.test(passwordInput); },
+		get number() { return /[0-9]/.test(passwordInput); },
+		get special() { return /[^A-Za-z0-9]/.test(passwordInput); }
+	};
+
+	let allPasswordValid = $derived(
+		passwordValidations.length && passwordValidations.uppercase && passwordValidations.number && passwordValidations.special
+	);
+
 	let disableCreateAccount = $derived(
-		usernameInput.length > 0 && emailInput.length > 0 && passwordInput.length >= 8 && !differentPass
+		usernameInput.length > 0 && emailInput.length > 0 && allPasswordValid && !differentPass
 			? false
 			: true
 	);
 
+	let invalidEmail = $derived(emailInput.length > 0 && !emailInput.includes('@'));
+
 	let toggle = () => {
 		hidePassword = !hidePassword;
-	};
+	}
+
+	$effect(() => {
+		if (form?.data) {
+			if (form.data.username !== undefined) usernameInput = form.data.username;
+			if (form.data.email !== undefined) emailInput = form.data.email;
+			if (form.data.password !== undefined) passwordInput = form.data.password;
+			if (form.data.confirmPassword !== undefined) confirmPasswordInput = form.data.confirmPassword;
+		}
+	});
 </script>
 
 <form class="background" method="POST">
 	<div class="top">
-		{#if differentPass && confirmPasswordInput}
-			<AuthError error_message="Passwords do not match" />
-		{/if}
 		{#if form?.error}
 			<AuthError error_message={form.error} />
 		{/if}
 		<SimpleInputWithIcon icon="" parentComponent={username} />
 		<SimpleInputWithIcon icon="" parentComponent={email} />
+		{#if invalidEmail}
+			<div class="email-error-message">
+				<AuthError error_message="Please double-check and enter a valid email address." />
+			</div>
+		{/if}
 		<SimpleInputWithIcon icon="" parentComponent={password} />
+		{#if passwordInput && !allPasswordValid}
+			<div class="password-requirements">
+				<div>
+					<span class="material-symbols-outlined" style="color: {passwordValidations.length ? 'green' : 'red'}">{passwordValidations.length ? 'check_circle' : 'cancel'}</span>
+					Password must be at least 8 characters
+				</div>
+				<div>
+					<span class="material-symbols-outlined" style="color: {passwordValidations.uppercase ? 'green' : 'red'}">{passwordValidations.uppercase ? 'check_circle' : 'cancel'}</span>
+					At least one uppercase letter
+				</div>
+				<div>
+					<span class="material-symbols-outlined" style="color: {passwordValidations.number ? 'green' : 'red'}">{passwordValidations.number ? 'check_circle' : 'cancel'}</span>
+					At least one number
+				</div>
+				<div>
+					<span class="material-symbols-outlined" style="color: {passwordValidations.special ? 'green' : 'red'}">{passwordValidations.special ? 'check_circle' : 'cancel'}</span>
+					At least one special character
+				</div>
+			</div>
+		{/if}
 		<SimpleInputWithIcon icon="" parentComponent={confirm_password} />
+		{#if differentPass && confirmPasswordInput}
+			<AuthError error_message="Passwords do not match" />
+		{/if}
 	</div>
 	<div class="bottom">
 		<SimpleLinkButton icon="arrow_back" text="" href="/login" />
@@ -145,5 +192,26 @@
 		cursor: pointer;
 		color: var(--light-gray);
 		padding-right: 12px;
+	}
+
+	.password-requirements {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		margin-top: 4px;
+		margin-bottom: 8px;
+		font-size: 13px;
+		width: 100%;
+		background: none;
+		color: white;
+	}
+	.password-requirements .material-symbols-outlined {
+		vertical-align: middle;
+		margin-right: 4px;
+		font-size: 18px;
+	}
+
+	.email-error-message {
+		margin-top: 8px;
 	}
 </style>

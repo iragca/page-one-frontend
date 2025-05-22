@@ -26,9 +26,9 @@ export const actions = {
         } catch (error: any) {
 
             // Handle specific error messages
-            if (error.message === 'Wrong password') {
+            if (error.message === 'Wrong password' || error.message === 'Invalid password') {
                 return fail(401, {
-                    error: error.message
+                    error: 'Login Failed. Incorrect username or password.'
                 });
             }
 

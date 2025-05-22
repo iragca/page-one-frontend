@@ -11,6 +11,14 @@ export const actions = {
     default: async ({ request, fetch }) => {
         const data = await request.formData();
 
+        // Prepare the submitted values for preservation
+        const preservedData = {
+            username: data.get('username'),
+            email: data.get('email'),
+            password: data.get('password'),
+            confirmPassword: data.get('confirmPassword')
+        };
+
         try {
             const response = await signup(
                 data.get('username') as string,
@@ -24,12 +32,14 @@ export const actions = {
             // Handle specific error messages
             if (error.message === 'User already exists') {
                 return fail(409, {
-                    error: error.message
+                    error: error.message,
+                    data: preservedData
                 });
             }
             // Handle other errors
             return fail(422, {
-                error: error.message
+                error: error.message,
+                data: preservedData
             });
         }
 
