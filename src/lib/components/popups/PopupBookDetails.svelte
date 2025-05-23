@@ -29,7 +29,8 @@
 						<input type="hidden" name="bookId" value={$chosenBook._id} />
 						<button type="submit"><SimpleButton iconName="delete" /></button>
 					</form>
-				{:else if $chosenBook.owned}
+				{/if}
+			{#if $chosenBook.owned}
 					<form action="?/removeBookFromUser" method="POST">
 						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
 						<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
