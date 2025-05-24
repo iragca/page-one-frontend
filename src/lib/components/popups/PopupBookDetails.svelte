@@ -15,48 +15,49 @@
 </script>
 
 <div class="book-info-card-bg">
-<div class="book-info-card-location">
-	<div class="book-info-card">
-		<PopupBookNavBar let:SimpleButton>
-			<button onclick={closeBookDetails} aria-label="Close">
-				<SimpleButton iconName="close" />
-			</button>
-			<div class="bookTitle">{$chosenBook.title}</div>
-			{#if $isAdmin}
-				{#if $editMode}
-					<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
-					<form action="?/deleteBook" method="POST">
-						<input type="hidden" name="bookId" value={$chosenBook._id} />
-						<button type="submit"><SimpleButton iconName="delete" /></button>
+	<div class="book-info-card-location">
+		<div class="book-info-card">
+			<PopupBookNavBar let:SimpleButton>
+				<button onclick={closeBookDetails} aria-label="Close">
+					<SimpleButton iconName="close" />
+				</button>
+				<div class="bookTitle">{$chosenBook.title}</div>
+				{#if $isAdmin}
+					{#if $editMode}
+						<button type="submit" form="editBookForm"><SimpleButton iconName="save" /></button>
+						<form action="?/deleteBook" method="POST">
+							<input type="hidden" name="bookId" value={$chosenBook._id} />
+							<button type="submit"><SimpleButton iconName="delete" /></button>
+						</form>
+					{/if}
+				{/if}
+				{#if $chosenBook.owned}
+					<form action="?/removeBookFromUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
+					</form>
+				{:else}
+					<form action="?/addBookToUser" method="POST">
+						<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
+						<button type="submit"><SimpleButton iconName="playlist_add" /></button>
 					</form>
 				{/if}
-			{/if}
-			{#if $chosenBook.owned}
-				<form action="?/removeBookFromUser" method="POST">
-					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-					<button type="submit"><SimpleButton iconName="playlist_remove" /></button>
+				{#if $isAdmin}
+					<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
+				{/if}
+				<button><SimpleButton iconName="download" /></button>
+			</PopupBookNavBar>
+			{#if $isAdmin && $editMode}
+				<form id="editBookForm" method="POST" action="?/editBook">
+					<input type="hidden" name="bookId" value={$chosenBook._id} />
+					<BookInfoCardEditMode book={$chosenBook} />
 				</form>
 			{:else}
-				<form action="?/addBookToUser" method="POST">
-					<input type="hidden" name="isbn_issn" value={$chosenBook.isbn_issn} />
-					<button type="submit"><SimpleButton iconName="playlist_add" /></button>
-				</form>
+				<BookInfoCard book={$chosenBook} />
 			{/if}
-			<button onclick={toggleEditMode}><SimpleButton iconName="edit" /></button>
-			<button><SimpleButton iconName="download" /></button>
-		</PopupBookNavBar>
-		{#if $isAdmin && $editMode}
-			<form id="editBookForm" method="POST" action="?/editBook">
-				<input type="hidden" name="bookId" value={$chosenBook._id} />
-				<BookInfoCardEditMode book={$chosenBook} />
-			</form>
-		{:else}
-			<BookInfoCard book={$chosenBook} />
-		{/if}
+		</div>
 	</div>
 </div>
-</div>
-
 
 <style>
 	.book-info-card-bg {
